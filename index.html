@@ -1,526 +1,439 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sumit Yadav — Strategy & Operations</title>
-<meta name="description" content="Sumit Yadav — IIM Calcutta MBA, Strategy & Operations Analyst at Blinkit. Former Accenture S&C. CAT 99.64 percentile."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#fafaf8;--white:#ffffff;--black:#0d0d0d;--text:#1a1a1a;--muted:#6b6b6b;
-  --light:#f4f3ee;--border:#e5e4de;--accent:#2563eb;--accent-light:#eff6ff;
-  --green:#16a34a;--card:#ffffff;--nav-bg:rgba(250,250,248,0.95);
-}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-thumb{background:var(--border);}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
-nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.06);}
-.nav-brand{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--black);text-decoration:none;}
-.nav-right{display:flex;align-items:center;gap:2rem;}
-.nav-links{display:flex;gap:1.8rem;list-style:none;}
-.nav-links a{font-size:0.8rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--black);}
-.nav-cta{display:inline-flex;align-items:center;gap:0.4rem;padding:0.48rem 1.1rem;background:var(--black);color:var(--white);font-size:0.78rem;font-weight:600;text-decoration:none;border-radius:6px;transition:background 0.2s,transform 0.15s;}
-.nav-cta:hover{background:var(--accent);transform:translateY(-1px);}
-
-/* HERO */
-.hero{min-height:100vh;padding:110px 5% 70px;display:flex;flex-direction:column;justify-content:center;background:var(--white);position:relative;overflow:hidden;}
-.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:44px 44px;opacity:0.3;pointer-events:none;}
-.hero-glow{position:absolute;top:-15%;right:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.06) 0%,transparent 65%);pointer-events:none;}
-.hero-inner{max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1;}
-.status-pill{display:inline-flex;align-items:center;gap:0.5rem;padding:0.32rem 0.85rem;background:var(--accent-light);border:1px solid rgba(37,99,235,0.2);border-radius:100px;font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.03em;margin-bottom:1.8rem;}
-.s-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pdot 2s infinite;}
-@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,0.4);}50%{box-shadow:0 0 0 5px rgba(22,163,74,0);}}
-.hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.8vw,5rem);font-weight:800;line-height:1.0;letter-spacing:-0.04em;color:var(--black);margin-bottom:0.35rem;}
-.hero-role{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,2.2vw,1.65rem);font-weight:400;color:var(--muted);margin-bottom:1.6rem;letter-spacing:-0.02em;}
-.hero-role span{color:var(--accent);font-weight:600;}
-.hero-desc{font-size:1.02rem;color:var(--muted);max-width:52ch;line-height:1.8;margin-bottom:2.2rem;font-weight:400;}
-.hero-desc strong{color:var(--text);font-weight:600;}
-.brands-row{display:flex;align-items:center;flex-wrap:wrap;gap:0.4rem;margin-bottom:2.5rem;}
-.brands-lbl{font-size:0.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-right:0.5rem;}
-.brand-chip{display:inline-flex;align-items:center;gap:0.38rem;padding:0.3rem 0.75rem;background:var(--light);border:1px solid var(--border);border-radius:6px;font-size:0.76rem;font-weight:600;color:var(--text);}
-.bdot{width:6px;height:6px;border-radius:50%;}
-.hero-ctas{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:3.5rem;}
-.btn-p{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;background:var(--black);color:var(--white);font-size:0.85rem;font-weight:600;text-decoration:none;border-radius:8px;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
-.btn-p:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,99,235,0.22);}
-.btn-p.blue{background:var(--accent);}
-.btn-p.blue:hover{background:#1d4ed8;}
-.btn-s{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;background:transparent;color:var(--text);font-size:0.85rem;font-weight:500;text-decoration:none;border-radius:8px;border:1.5px solid var(--border);transition:border-color 0.2s,background 0.2s;}
-.btn-s:hover{border-color:var(--black);background:var(--light);}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:640px;}
-.hstat{background:var(--white);padding:1.1rem 1.4rem;}
-.hstat-n{font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:800;color:var(--black);line-height:1;letter-spacing:-0.03em;}
-.hstat-l{font-size:0.68rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.2rem;line-height:1.35;}
-
-/* SECTIONS */
-section{padding:5rem 5%;}
-.sw{max-width:1080px;margin:0 auto;}
-.stag{display:inline-flex;align-items:center;gap:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.8rem;}
-.stag::before{content:'//';opacity:0.45;}
-.sh{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-0.03em;color:var(--black);line-height:1.1;margin-bottom:0.5rem;}
-.ssub{font-size:0.97rem;color:var(--muted);max-width:50ch;line-height:1.75;margin-bottom:2.8rem;}
-
-/* ABOUT */
-#about{background:var(--light);}
-.about-g{display:grid;grid-template-columns:1.15fr 0.85fr;gap:4.5rem;align-items:start;}
-.ab p{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
-.ab p strong{color:var(--text);font-weight:600;}
-.pullq{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--black);border-left:3px solid var(--accent);padding-left:1.1rem;margin:1.6rem 0;line-height:1.5;}
-.ab-cards{display:flex;flex-direction:column;gap:0.85rem;}
-.ab-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:0.9rem;}
-.ab-ic{font-size:1.1rem;flex-shrink:0;width:2.2rem;height:2.2rem;display:flex;align-items:center;justify-content:center;background:var(--light);border-radius:7px;}
-.ab-ct h4{font-size:0.78rem;font-weight:700;color:var(--black);margin-bottom:0.2rem;text-transform:uppercase;letter-spacing:0.05em;}
-.ab-ct p{font-size:0.8rem;color:var(--muted);line-height:1.5;}
-
-/* EXPERIENCE */
-#experience{background:var(--white);}
-.exp-t{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.exp-r{display:grid;grid-template-columns:210px 1fr;border-bottom:1px solid var(--border);}
-.exp-r:last-child{border-bottom:none;}
-.exp-l{padding:1.8rem;background:var(--light);border-right:1px solid var(--border);}
-.exp-co{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--black);margin-bottom:0.25rem;}
-.exp-ttl{font-size:0.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;}
-.exp-dt{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted);margin-bottom:0.5rem;}
-.ebadge{display:inline-block;padding:0.12rem 0.5rem;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;border-radius:4px;}
-.eft{background:#dcfce7;color:#15803d;}
-.ein{background:#fef9c3;color:#a16207;}
-.epr{background:#ede9fe;color:#6d28d9;}
-.exp-ri{padding:1.8rem;}
-.exp-ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
-.exp-ul li{font-size:0.86rem;color:var(--muted);padding-left:1.15rem;position:relative;line-height:1.65;}
-.exp-ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:0.75rem;}
-.exp-ul li strong{color:var(--text);font-weight:600;}
-
-/* PROJECTS */
-#projects{background:var(--light);}
-.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
-.pc{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.7rem;display:flex;flex-direction:column;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
-.pc:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.07);border-color:rgba(37,99,235,0.3);}
-.pc.feat{grid-column:span 2;background:var(--black);border-color:transparent;}
-.pc.feat:hover{border-color:transparent;box-shadow:0 10px 28px rgba(0,0,0,0.25);}
-.ptag{font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:0.7rem;}
-.pc.feat .ptag{color:rgba(255,255,255,0.45);}
-.ptitle{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--black);margin-bottom:0.55rem;line-height:1.3;}
-.pc.feat .ptitle{color:var(--white);}
-.pdesc{font-size:0.81rem;color:var(--muted);line-height:1.65;flex-grow:1;margin-bottom:1.1rem;}
-.pc.feat .pdesc{color:rgba(255,255,255,0.5);}
-.pmet{display:flex;flex-wrap:wrap;gap:0.4rem;}
-.pm{font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:500;padding:0.22rem 0.6rem;background:var(--light);border:1px solid var(--border);border-radius:5px;color:var(--text);}
-.pc.feat .pm{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.14);color:rgba(255,255,255,0.78);}
-
-/* SKILLS */
-#skills{background:var(--white);}
-.skills-g{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
-.skb{margin-bottom:1.8rem;}
-.skb-l{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:0.65rem;padding-bottom:0.45rem;border-bottom:1px solid var(--border);}
-.sk-list{display:flex;flex-wrap:wrap;gap:0.38rem;}
-.sp{font-size:0.77rem;font-weight:500;padding:0.28rem 0.72rem;background:var(--light);border:1px solid var(--border);border-radius:100px;color:var(--text);transition:background 0.15s,border-color 0.15s;}
-.sp:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent);}
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-top:0.4rem;}
-.cc{display:flex;align-items:flex-start;gap:0.65rem;padding:0.85rem 1rem;background:var(--light);border:1px solid var(--border);border-radius:8px;transition:border-color 0.2s;}
-.cc:hover{border-color:var(--accent);}
-.cc-ic{font-size:0.9rem;flex-shrink:0;width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--white);border-radius:6px;border:1px solid var(--border);}
-.cc-inf h5{font-size:0.76rem;font-weight:600;color:var(--black);margin-bottom:0.08rem;line-height:1.3;}
-.cc-inf span{font-size:0.67rem;color:var(--muted);font-family:'JetBrains Mono',monospace;}
-
-/* EDUCATION */
-#education{background:var(--light);}
-.edu-g{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
-.edu-es{display:flex;flex-direction:column;gap:1.1rem;}
-.edu-c{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem;}
-.edu-ct{display:flex;justify-content:space-between;align-items:flex-start;gap:0.8rem;margin-bottom:0.4rem;}
-.edu-sc{font-family:'Syne',sans-serif;font-size:0.92rem;font-weight:700;color:var(--black);}
-.edu-yr{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--muted);flex-shrink:0;}
-.edu-dg{font-size:0.8rem;color:var(--muted);margin-bottom:0.35rem;}
-.edu-gr{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--accent);font-weight:500;}
-.edu-nt{margin-top:0.55rem;font-size:0.76rem;color:var(--muted);padding-top:0.55rem;border-top:1px solid var(--border);line-height:1.5;}
-.ach-l{display:flex;flex-direction:column;gap:0.75rem;}
-.ai{display:flex;gap:0.9rem;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:0.95rem 1.1rem;align-items:flex-start;}
-.ai-em{font-size:0.95rem;flex-shrink:0;width:1.9rem;height:1.9rem;display:flex;align-items:center;justify-content:center;background:var(--light);border-radius:6px;}
-.ai-tx{font-size:0.8rem;color:var(--muted);line-height:1.55;}
-.ai-tx strong{color:var(--black);font-weight:600;}
-
-/* CONTACT */
-#contact{background:var(--black);}
-.contact-g{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-#contact .stag{color:rgba(255,255,255,0.35);}
-#contact .sh{color:var(--white);}
-#contact .ssub{color:rgba(255,255,255,0.45);}
-.cl{display:flex;flex-direction:column;gap:0.65rem;}
-.clink{display:flex;align-items:center;gap:0.9rem;padding:0.95rem 1.1rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:10px;text-decoration:none;color:rgba(255,255,255,0.7);font-size:0.85rem;transition:background 0.2s,border-color 0.2s,color 0.2s;}
-.clink:hover{background:rgba(255,255,255,0.08);border-color:rgba(37,99,235,0.45);color:var(--white);}
-.cl-ic{width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.07);border-radius:7px;font-size:0.95rem;}
-.cv-btn{margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:0.55rem;padding:0.95rem;background:var(--accent);color:var(--white);border:none;border-radius:10px;font-size:0.86rem;font-weight:600;text-decoration:none;transition:background 0.2s,transform 0.15s;width:100%;}
-.cv-btn:hover{background:#1d4ed8;transform:translateY(-2px);}
-.c-aside{display:flex;flex-direction:column;gap:1.1rem;}
-.c-quote{padding:1.8rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;}
-.c-quote p{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:600;color:rgba(255,255,255,0.82);line-height:1.6;font-style:italic;}
-.c-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
-.ctag{padding:0.28rem 0.75rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:100px;font-size:0.72rem;color:rgba(255,255,255,0.45);}
-
-footer{background:var(--black);border-top:1px solid rgba(255,255,255,0.07);padding:1.4rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.8rem;}
-.fl{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:rgba(255,255,255,0.22);}
-.fr{display:flex;gap:1.5rem;}
-.fr a{font-size:0.73rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
-.fr a:hover{color:rgba(255,255,255,0.7);}
-
-@keyframes fiu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.anim{opacity:0;animation:fiu 0.6s ease forwards;}
-.d1{animation-delay:0.1s;}.d2{animation-delay:0.2s;}.d3{animation-delay:0.3s;}
-.d4{animation-delay:0.4s;}.d5{animation-delay:0.5s;}.d6{animation-delay:0.6s;}
-
-@media(max-width:960px){
-  .about-g,.edu-g,.skills-g,.contact-g{grid-template-columns:1fr;gap:2.5rem;}
-  .pg{grid-template-columns:1fr;}
-  .pc.feat{grid-column:span 1;}
-  .exp-r{grid-template-columns:1fr;}
-  .exp-l{border-right:none;border-bottom:1px solid var(--border);}
-  .hero-stats{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:640px){
-  nav{padding:0 4%;}
-  .nav-links{display:none;}
-  section{padding:3.5rem 4%;}
-  .hero{padding:95px 4% 55px;}
-  .cg{grid-template-columns:1fr;}
-  footer{flex-direction:column;text-align:center;}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sumit Yadav — Strategy, Growth & Systems</title>
+  <meta name="description" content="A premium portfolio for Sumit Yadav — blending strategy, growth, product and execution across Blinkit, Shopdeck, Accenture and IIM Calcutta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root,[data-theme="light"]{
+      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --text-3xl:clamp(2.7rem,1rem + 4vw,5.5rem);
+      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem; --space-12:3rem; --space-16:4rem; --space-20:5rem; --space-24:6rem;
+      --bg:#f5f2ed; --surface:#fbf9f5; --surface-2:#f1eee7; --surface-3:#e8e3da; --line:rgba(40,37,29,.12);
+      --text:#1f1b17; --muted:#6f6a63; --faint:#9d978f; --inverse:#f9f8f4;
+      --primary:#0d6b72; --primary-2:#d4e6e4; --accent:#bb4d24; --accent-2:#f3dfd5;
+      --shadow-sm:0 1px 2px rgba(20,16,12,.05); --shadow-md:0 10px 30px rgba(20,16,12,.08); --shadow-lg:0 24px 60px rgba(20,16,12,.14);
+      --radius-sm:.5rem; --radius-md:.9rem; --radius-lg:1.3rem; --radius-xl:2rem; --radius-pill:999px;
+      --font-display:'Instrument Serif', Georgia, serif; --font-body:'Inter', Arial, sans-serif;
+      --content:1200px;
+    }
+    [data-theme="dark"]{
+      --bg:#111111; --surface:#171717; --surface-2:#1d1d1d; --surface-3:#272727; --line:rgba(255,255,255,.1);
+      --text:#f4efe8; --muted:#b4aba0; --faint:#7e766e; --inverse:#171717;
+      --primary:#82c7c6; --primary-2:rgba(130,199,198,.12); --accent:#ff8d5e; --accent-2:rgba(255,141,94,.12);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.25); --shadow-md:0 16px 44px rgba(0,0,0,.28); --shadow-lg:0 30px 90px rgba(0,0,0,.4);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);font-size:var(--text-base);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img,iframe,svg{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;border:none;background:none;color:inherit;cursor:pointer}
+    .skip{position:absolute;left:-9999px}
+    .skip:focus{left:1rem;top:1rem;z-index:1000;background:var(--surface);padding:.75rem 1rem;border-radius:var(--radius-sm);outline:2px solid var(--primary)}
+    .shell{position:relative;overflow:hidden}
+    .shell::before,.shell::after{content:"";position:fixed;inset:auto;pointer-events:none;z-index:0;filter:blur(70px);opacity:.45}
+    .shell::before{width:30rem;height:30rem;top:-8rem;right:-10rem;background:radial-gradient(circle,var(--primary-2),transparent 60%)}
+    .shell::after{width:26rem;height:26rem;bottom:5%;left:-8rem;background:radial-gradient(circle,var(--accent-2),transparent 60%)}
+    .grain{position:fixed;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.18) 0 1px,transparent 1px),radial-gradient(circle at 80% 60%,rgba(255,255,255,.15) 0 1px,transparent 1px);background-size:34px 34px,48px 48px;mix-blend-mode:overlay}
+    .container{width:min(calc(100% - 2rem),var(--content));margin:0 auto;position:relative;z-index:1}
+    .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.85rem;font-size:var(--text-sm);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .brand-mark{width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:linear-gradient(135deg,var(--surface-2),transparent 70%)}
+    .brand-mark svg{width:1.3rem;height:1.3rem}
+    .nav-links{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap}
+    .nav-links a{font-size:var(--text-sm);color:var(--muted)}
+    .nav-links a:hover{color:var(--text)}
+    .theme-toggle,.btn{min-height:44px;padding:.8rem 1.1rem;border-radius:var(--radius-pill);border:1px solid var(--line);transition:.2s ease}
+    .theme-toggle:hover,.btn:hover{transform:translateY(-1px)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;font-size:var(--text-sm);font-weight:600}
+    .btn-primary{background:var(--text);color:var(--inverse);border-color:transparent}
+    .btn-secondary{background:transparent;color:var(--text)}
+    .eyebrow{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.45rem .8rem;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);background:color-mix(in srgb,var(--surface) 70%,transparent)}
+    .hero{padding:clamp(4rem,9vw,8rem) 0 3rem}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:end}
+    h1,h2,h3{line-height:1.05;font-weight:400}
+    h1{font-family:var(--font-display);font-size:var(--text-3xl);max-width:11ch;letter-spacing:-.03em}
+    .lede{font-size:var(--text-lg);max-width:42rem;color:var(--muted);margin-top:1.2rem}
+    .hero-copy{display:flex;flex-direction:column;gap:1.4rem}
+    .hero-actions,.mini-links{display:flex;flex-wrap:wrap;gap:.9rem}
+    .mini-links a{font-size:var(--text-sm);color:var(--muted);text-decoration:underline;text-underline-offset:.25rem}
+    .hero-panel{background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 94%,transparent),var(--surface-2));border:1px solid var(--line);border-radius:var(--radius-xl);padding:1.35rem;box-shadow:var(--shadow-lg)}
+    .portrait-card{display:grid;gap:1rem}
+    .portrait-frame{aspect-ratio:4/5;border-radius:calc(var(--radius-xl) - .3rem);overflow:hidden;background:linear-gradient(160deg,var(--surface-3),transparent 70%),radial-gradient(circle at 20% 20%,var(--primary-2),transparent 40%),#1b1b1b;display:grid;place-items:end;padding:1rem;border:1px solid var(--line)}
+    .portrait-figure{width:100%;height:100%;border-radius:1.4rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));position:relative;overflow:hidden}
+    .portrait-figure::before{content:"SUMIT YADAV";position:absolute;left:1rem;top:1rem;font-size:var(--text-xs);letter-spacing:.18em;color:rgba(255,255,255,.55)}
+    .portrait-figure::after{content:"STRATEGY \00B7 GROWTH \00B7 OPERATIONS";position:absolute;left:1rem;bottom:1rem;font-size:var(--text-xs);letter-spacing:.16em;color:rgba(255,255,255,.55)}
+    .portrait-silhouette{position:absolute;inset:auto 12% 0 12%;height:78%;border-radius:12rem 12rem 1.8rem 1.8rem;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+    .portrait-silhouette::before{content:"";position:absolute;top:-18%;left:50%;transform:translateX(-50%);width:34%;aspect-ratio:1;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.08))}
+    .metric-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:2rem 0 1rem}
+    .metric{padding:1.1rem 1.15rem;border-top:1px solid var(--line)}
+    .metric strong{display:block;font-size:clamp(1.5rem,1.2rem + 1.5vw,2.5rem);line-height:1;font-weight:800}
+    .metric span{display:block;margin-top:.4rem;color:var(--muted);font-size:var(--text-sm)}
+    section{padding:clamp(3rem,7vw,6rem) 0;border-top:1px solid var(--line)}
+    .section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:2rem;align-items:start;margin-bottom:2rem}
+    .section-head h2{font-family:var(--font-display);font-size:var(--text-2xl)}
+    .section-head p{color:var(--muted);max-width:50rem}
+    .cards-3,.cards-2,.cards-4{display:grid;gap:1rem}
+    .cards-3{grid-template-columns:repeat(3,1fr)} .cards-2{grid-template-columns:repeat(2,1fr)} .cards-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 96%,transparent),var(--surface-2));border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow-sm)}
+    .card h3{font-size:var(--text-lg);font-family:var(--font-body);font-weight:700;line-height:1.2}
+    .card p,.card li{color:var(--muted);font-size:var(--text-sm)}
+    .card ul{list-style:none;display:grid;gap:.65rem;margin-top:1rem}
+    .card li::before{content:"— ";color:var(--primary)}
+    .benchmark-table{overflow:auto;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--surface)}
+    table{width:100%;border-collapse:collapse;min-width:880px}
+    th,td{padding:1rem 1.1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:var(--text-sm)}
+    th{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
+    td strong{display:block;margin-bottom:.25rem}
+    .timeline{display:grid;gap:1rem}
+    .timeline-item{display:grid;grid-template-columns:220px 1fr;gap:1.4rem;padding:1.2rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--surface),var(--surface-2))}
+    .timeline-item time{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+    .timeline-item h3{font-size:var(--text-lg);font-weight:700;font-family:var(--font-body)}
+    .timeline-item .meta{color:var(--muted);font-size:var(--text-sm);margin:.2rem 0 .8rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+    .tag{padding:.45rem .75rem;border-radius:var(--radius-pill);background:var(--surface-3);font-size:var(--text-xs);color:var(--muted);border:1px solid var(--line)}
+    .showcase{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
+    .banner-card{min-height:420px;border-radius:var(--radius-xl);border:1px solid var(--line);overflow:hidden;background:linear-gradient(135deg,rgba(130,199,198,.18),transparent 42%),linear-gradient(180deg,#151515,#0f0f0f);padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+    .banner-card.light{background:linear-gradient(135deg,rgba(13,107,114,.08),transparent 35%),linear-gradient(180deg,#faf8f2,#ebe5db)}
+    .banner-card::after{content:"";position:absolute;right:-8%;bottom:-14%;width:18rem;height:18rem;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 60%)}
+    .banner-top{display:flex;justify-content:space-between;gap:1rem;align-items:start;position:relative;z-index:1}
+    .banner-title{font-family:var(--font-display);font-size:clamp(2rem,1.5rem + 2vw,3.6rem);max-width:8ch;line-height:.98}
+    .banner-sub{max-width:30rem;color:var(--muted);margin-top:.8rem}
+    .banner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;position:relative;z-index:1}
+    .mini-panel{padding:1rem;border:1px solid rgba(255,255,255,.08);border-radius:1.1rem;background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
+    [data-theme="light"] .mini-panel{border-color:rgba(0,0,0,.08);background:rgba(255,255,255,.65)}
+    .media-stack{display:grid;gap:1rem}
+    .doc-card iframe,.img-card img{width:100%;border:0;border-radius:1rem;background:#fff;aspect-ratio:4/3}
+    .doc-card,.img-card{padding:1rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
+    .doc-card p,.img-card p{margin-top:.7rem;font-size:var(--text-sm);color:var(--muted)}
+    .doc-links{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .doc-link{padding:1.1rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--surface),var(--surface-2))}
+    .doc-link small{display:block;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.45rem}
+    .doc-link strong{display:block;font-size:var(--text-base);margin-bottom:.4rem}
+    .grid-masonry{columns:2 280px;column-gap:1rem}
+    .grid-masonry .artifact{break-inside:avoid;margin-bottom:1rem}
+    .artifact{padding:1rem;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--surface)}
+    .artifact img{border-radius:1rem;width:100%;height:auto}
+    .artifact span{display:block;margin-top:.7rem;color:var(--muted);font-size:var(--text-sm)}
+    .footer{padding:2rem 0 4rem;color:var(--muted)}
+    .footer-card{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;padding:1.2rem;border:1px solid var(--line);border-radius:var(--radius-xl);background:linear-gradient(180deg,var(--surface),var(--surface-2))}
+    .footer-card h2{font-family:var(--font-display);font-size:var(--text-xl)}
+    .contact-list{display:grid;gap:.7rem}
+    .contact-list a{display:inline-flex;align-items:center;gap:.6rem;color:var(--text)}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media (max-width: 1024px){
+      .hero-grid,.section-head,.showcase,.footer-card{grid-template-columns:1fr}
+      .cards-4{grid-template-columns:repeat(2,1fr)}
+      .metric-strip,.cards-3,.cards-2{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .nav-links{display:none}
+      .hero{padding-top:2.5rem}
+      .metric-strip,.cards-3,.cards-2,.cards-4,.doc-links{grid-template-columns:1fr}
+      .timeline-item{grid-template-columns:1fr}
+      .container{width:min(calc(100% - 1.2rem),var(--content))}
+      .banner-card{min-height:360px}
+      .grid-masonry{columns:1}
+    }
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  </style>
 </head>
 <body>
-
-<nav id="nb">
-  <a href="#" class="nav-brand">Sumit Yadav</a>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-    </ul>
-    <a href="sumit_strategy_growth.pdf" download class="nav-cta">↓ Download CV</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="status-pill anim d1"><span class="s-dot"></span>Open to Strategy · Growth · Consulting Roles</div>
-    <h1 class="hero-name anim d2">Sumit Yadav</h1>
-    <p class="hero-role anim d3">Strategy &amp; Operations &nbsp;·&nbsp; <span>IIM Calcutta MBA</span> &nbsp;·&nbsp; NIT Kurukshetra Engineer</p>
-    <p class="hero-desc anim d4">30+ months building operational systems at scale — across <strong>1,800+ Blinkit dark stores</strong>, <strong>80+ D2C brands at Shopdeck</strong>, and strategic mandates at <strong>Accenture Strategy &amp; Consulting</strong>. CAT 99.64 percentile. Indian Navy selectee.</p>
-    <div class="brands-row anim d5">
-      <span class="brands-lbl">Currently</span>
-      <span class="brand-chip"><span class="bdot" style="background:#f97316"></span>Blinkit</span>
-      <span class="brands-lbl">Previously</span>
-      <span class="brand-chip"><span class="bdot" style="background:#7c3aed"></span>Accenture S&amp;C</span>
-      <span class="brand-chip"><span class="bdot" style="background:#0ea5e9"></span>Shopdeck</span>
-      <span class="brand-chip"><span class="bdot" style="background:#0369a1"></span>Adani</span>
-      <span class="brand-chip"><span class="bdot" style="background:#2563eb"></span>IIM Calcutta</span>
-    </div>
-    <div class="hero-ctas anim d6">
-      <a href="#experience" class="btn-p">View My Work →</a>
-      <a href="sumit_strategy_growth.pdf" download class="btn-p blue">↓ Download CV</a>
-      <a href="#contact" class="btn-s">Get in Touch</a>
-    </div>
-    <div class="hero-stats anim d6">
-      <div class="hstat"><div class="hstat-n">2,000+</div><div class="hstat-l">Dark stores<br/>impacted</div></div>
-      <div class="hstat"><div class="hstat-n">₹100Cr+</div><div class="hstat-l">Revenue<br/>generated</div></div>
-      <div class="hstat"><div class="hstat-n">15+</div><div class="hstat-l">Pan-India pilots<br/>scaled</div></div>
-      <div class="hstat"><div class="hstat-n">99.64</div><div class="hstat-l">CAT percentile<br/>(QA: 99.83)</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="sw">
-    <div class="about-g">
-      <div class="ab">
-        <div class="stag">About</div>
-        <h2 class="sh">Engineer. MBA.<br/>Operator.</h2>
-        <p>I'm a Mechanical Engineer from NIT Kurukshetra who went to IIM Calcutta and spent the last 30 months inside some of India's most dynamic businesses — not advising them, but building inside them.</p>
-        <p>At <strong>Blinkit</strong>, I own location strategy and operational infrastructure across 1,800+ dark stores. I've built execution dashboards at 2,000+ locations, designed diagnostic systems that moved real metrics, and led cross-functional pilots from whiteboard to pan-India rollout.</p>
-        <p>At <strong>Shopdeck</strong>, I managed commercial growth for 80+ D2C brands — generating ₹100 Cr+ in annualised business and learning what it actually means to own a P&amp;L.</p>
-        <p>At <strong>Accenture S&amp;C</strong>, I structured strategic procurement decisions under real stakes — should-cost modelling, vendor evaluation, and cross-stakeholder alignment.</p>
-        <div class="pullq">"Strategy without execution is just creative writing. I care about both."</div>
-        <p>Outside work, I think about how operational systems outlast their creators and what separates a good framework from one that actually gets used.</p>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+    <div class="grain"></div>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="Sumit Yadav home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7c2-2 4-3 7-3 3.5 0 6.3 1.6 7 4.5.8 3.2-1.1 5.9-5.6 7.3L9 17"/><path d="M6 18c1.4 1.3 3.4 2 5.7 2 3.7 0 6.5-1.7 7.3-4.7"/></svg>
+          </span>
+          <span>Sumit Yadav</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#thesis">Positioning</a>
+          <a href="#work">Experience</a>
+          <a href="#proof">Proof</a>
+          <a href="#docs">Documents</a>
+          <a href="#artifacts">Artifacts</a>
+        </nav>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">Theme</button>
       </div>
-      <div class="ab-cards">
-        <div class="ab-card"><div class="ab-ic">🎓</div><div class="ab-ct"><h4>IIM Calcutta · MBA 2025</h4><p>CAT 99.64 percentile (QA: 99.83%ile). Converted 12/15 IIM calls including IIM-C, IIM-A, and IIFT.</p></div></div>
-        <div class="ab-card"><div class="ab-ic">⚙️</div><div class="ab-ct"><h4>NIT Kurukshetra · B.Tech</h4><p>CGPA 8.36/10. Ranked 1st in batch for 10 consecutive years. 10/10 GPA in Semester 6.</p></div></div>
-        <div class="ab-card"><div class="ab-ic">⚓</div><div class="ab-ct"><h4>Indian Navy Selectee</h4><p>Shortlisted for B.Tech Cadet Entry. Top 1.5%ile in NDA twice. GATE AIR 2070/1.2L+.</p></div></div>
-        <div class="ab-card"><div class="ab-ic">🏆</div><div class="ab-ct"><h4>National Competition Winner</h4><p>1st/20+ teams — ₹10K, Junkyard War. 1st/8+ teams — energy conversion. 2nd/50+ — Roller Coaster.</p></div></div>
-        <div class="ab-card"><div class="ab-ic">❤️</div><div class="ab-ct"><h4>Social Impact · Shiksha</h4><p>1,000+ hours mentoring 100+ underprivileged children. Raised ₹3L+. Community library with 500+ books.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section id="experience">
-  <div class="sw">
-    <div class="stag">Experience</div>
-    <h2 class="sh">Work History</h2>
-    <p class="ssub">30 months of full-time experience across strategy, growth, operations, and consulting.</p>
-    <div class="exp-t">
+    <main id="main">
+      <section class="hero container" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy reveal visible">
+            <span class="eyebrow">Operator mindset · premium personal site</span>
+            <h1>Building growth systems that survive contact with reality.</h1>
+            <p class="lede">A strategy, growth, product, and operations portfolio built with the editorial restraint of Ellipsus, the visual confidence of Apple, and the cinematic hierarchy of Netflix — but translated into a sharper operator story for Sumit Yadav.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#proof">Explore proof of work</a>
+              <a class="btn btn-secondary" href="#docs">Open documents</a>
+            </div>
+            <div class="mini-links">
+              <a href="My_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+              <a href="My_Resume-1.pdf" target="_blank" rel="noopener noreferrer">Alt resume</a>
+              <a href="Checklist-Handbook.pdf" target="_blank" rel="noopener noreferrer">Checklist handbook</a>
+              <a href="Campaign-Handbook-2.pdf" target="_blank" rel="noopener noreferrer">Campaign SOP</a>
+              <a href="Pre-Live-PPT-Final-1.pdf" target="_blank" rel="noopener noreferrer">Pre-live deck</a>
+            </div>
+          </div>
+          <aside class="hero-panel portrait-card reveal">
+            <div class="portrait-frame">
+              <div class="portrait-figure" aria-hidden="true">
+                <div class="portrait-silhouette"></div>
+              </div>
+            </div>
+            <div>
+              <span class="eyebrow">Current profile</span>
+              <p style="margin-top:.85rem;color:var(--muted)">Blinkit generalist working across product, strategy, and operations; ex-Shopdeck growth; ex-Accenture Strategy intern; MBA from IIM Calcutta; CAT 99.64 percentile.</p>
+            </div>
+          </aside>
+        </div>
+        <div class="metric-strip">
+          <div class="metric reveal"><strong>2,300+</strong><span>Dark stores influenced across Blinkit systems</span></div>
+          <div class="metric reveal"><strong>₹100Cr+</strong><span>Annual business impact across Shopdeck clients</span></div>
+          <div class="metric reveal"><strong>80+</strong><span>D2C brands handled in growth and troubleshooting</span></div>
+          <div class="metric reveal"><strong>10+</strong><span>Certifications in strategy, consulting and product</span></div>
+        </div>
+      </section>
 
-      <div class="exp-r">
-        <div class="exp-l"><div class="exp-co">Blinkit</div><div class="exp-ttl">Strategy &amp; Ops Analyst</div><div class="exp-dt">May 2025 — Present · 10 mo</div><span class="ebadge eft">Full-Time</span></div>
-        <div class="exp-ri"><ul class="exp-ul">
-          <li>Built location strategy across <strong>1,800+ dark stores</strong>, achieving <strong>100% layout digitization</strong> and enforcing a unified bin-ID framework.</li>
-          <li>Reduced variance by <strong>43%</strong> by building and scaling a prioritization logic and execution dashboard across <strong>2,000+ stores</strong>.</li>
-          <li>Developed <strong>4 diagnostic heatmaps</strong>, improving item placement accuracy by <strong>22%</strong> and reducing missing-item complaints by <strong>23%</strong>.</li>
-          <li>Redesigned LT store layouts, increasing space utilisation by <strong>1.5x</strong> and driving <strong>18% GMV uplift</strong> per sq. ft. across redesigned stores.</li>
-          <li>Designed and implemented FEFO inventory logic with batch segregation for perishables and pharma, reducing complaints by <strong>25%</strong>.</li>
-          <li>Improved replenishment accuracy to <strong>90%</strong> by digitizing storage capacity mapping, eliminating manual inputs and enabling <strong>100%</strong> layout integration.</li>
-          <li>Reduced in-store picking time by <strong>10%</strong> by optimizing pick-paths using spatial analytics, increasing throughput by <strong>7.5%</strong>.</li>
-          <li>Led a <strong>10+ member</strong> cross-functional team to design, execute, and scale <strong>15+ operational pilots</strong> across India.</li>
-        </ul></div>
-      </div>
+      <section id="thesis">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Design thesis</h2>
+            <p>This rebuild is intentionally benchmarked against three very different references. Ellipsus contributes editorial calm and language-first composition; Apple contributes premium surfaces, image-led storytelling, and whitespace discipline; Netflix contributes bold banner sequencing, dark immersion, and content-led browsing rhythm. Your previous site already had strong factual density, but it lacked stronger art direction, media hierarchy, and a dedicated space for live documents and visual proof.</p>
+          </div>
+          <div class="benchmark-table reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>What it does well</th>
+                  <th>What your old site missed</th>
+                  <th>How this redesign responds</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Ellipsus</strong>Editorial software calm</td>
+                  <td>Strong typography, high trust, soft surfaces, focused copy blocks, no visual clutter.</td>
+                  <td>The old website had good content but not enough breathing room or elegant narrative pacing.</td>
+                  <td>Introduced serif-led headlines, muted palette moments, cleaner grids, and quieter cards that let the writing feel more premium.</td>
+                </tr>
+                <tr>
+                  <td><strong>Apple</strong>Premium product theater</td>
+                  <td>Hero-first storytelling, bold confidence, polished section transitions, visual prestige.</td>
+                  <td>The old website explained your work but did not stage it like flagship work.</td>
+                  <td>Added cinematic banner sections, elevated cards, strong hierarchy, and product-like presentation for documents and achievements.</td>
+                </tr>
+                <tr>
+                  <td><strong>Netflix</strong>Immersive content browsing</td>
+                  <td>Dark visual depth, strong banners, content shelves, instant scanability.</td>
+                  <td>The old website did not feel alive or “live” with artifacts, assets, and a rich content wall.</td>
+                  <td>Added a dark premium mode, media shelves, artifact gallery, and live document blocks that can be expanded on GitHub easily.</td>
+                </tr>
+                <tr>
+                  <td><strong>Your current site</strong>Dense operator credibility</td>
+                  <td>Strong metrics, strong experience bullets, high factual trust.</td>
+                  <td>Needed stronger visual identity, better banners, deeper media integration, and a more modern premium edge.</td>
+                  <td>Preserved the proof, then repackaged it into a richer portfolio system built for hiring managers, founders, and strategy/product roles.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
-      <div class="exp-r">
-        <div class="exp-l"><div class="exp-co">Accenture S&amp;C</div><div class="exp-ttl">Strategy Analyst Intern</div><div class="exp-dt">May 2024 — Jun 2024 · 2 mo</div><span class="ebadge ein">Internship</span></div>
-        <div class="exp-ri"><ul class="exp-ul">
-          <li>Designed a <strong>should-cost model</strong> across <strong>15+ cost drivers</strong>, identifying optimization levers for <strong>10% budget reduction</strong>.</li>
-          <li>Evaluated <strong>5 international vendor proposals</strong> across <strong>50+ evaluation metrics</strong> to produce a comprehensive bid evaluation report.</li>
-          <li>Facilitated <strong>5+ cross-stakeholder</strong> query resolution meetings; reviewed <strong>20+ vendor documents</strong> to optimize project scope.</li>
-        </ul></div>
-      </div>
+      <section id="work">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Selected work</h2>
+            <p>The strongest portfolio version is not a resume pasted online. It is a narrative of scale, ambiguity, systems thinking, and repeatable execution. This section keeps the facts tight and makes each role read like a meaningful operating chapter instead of a generic chronology.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <div>
+                <time>May 2025 — Present</time>
+              </div>
+              <div>
+                <h3>Blinkit — Generalist / Senior Program Manager</h3>
+                <p class="meta">Product, strategy and operations across India’s quick-commerce network</p>
+                <p>Built location and execution systems across 2,300+ dark stores, including layout digitization, prioritization logic, bin-ID standardization, and operational pilots that improved variance, placement accuracy, replenishment accuracy, and pick-path adherence.</p>
+                <div class="tags"><span class="tag">2,300+ stores</span><span class="tag">43% variance reduction</span><span class="tag">18% GMV uplift per sq. ft.</span><span class="tag">76% drop in expiry complaints</span></div>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <div>
+                <time>Sep 2022 — May 2023</time>
+              </div>
+              <div>
+                <h3>Shopdeck — Assistant Manager, Growth</h3>
+                <p class="meta">Growth diagnostics, go-live quality, marketing troubleshooting, merchant tooling</p>
+                <p>Managed 80+ D2C brands and drove ₹100Cr+ annualized business while building dashboards, campaign SOPs, go-live checklists, and troubleshooting frameworks for RTO, pricing, audience fatigue, and marketing volatility.</p>
+                <div class="tags"><span class="tag">₹100Cr+ business impact</span><span class="tag">80+ brands</span><span class="tag">500+ clients standardized</span><span class="tag">92% query resolution</span></div>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <div>
+                <time>May 2024 — Jun 2024</time>
+              </div>
+              <div>
+                <h3>Accenture Strategy & Consulting — Strategy Analyst Intern</h3>
+                <p class="meta">Vendor evaluation, should-cost modeling, structured decision support</p>
+                <p>Worked on procurement strategy under real cost pressure by evaluating international proposals across 50+ metrics and identifying cost levers across 15+ drivers in a bottom-up should-cost model.</p>
+                <div class="tags"><span class="tag">50+ evaluation metrics</span><span class="tag">15+ cost drivers</span><span class="tag">10% optimization identified</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      <div class="exp-r">
-        <div class="exp-l"><div class="exp-co">Shopdeck</div><div class="exp-ttl">Asst. Manager — Growth</div><div class="exp-dt">Sep 2022 — May 2023 · 8 mo</div><span class="ebadge eft">Full-Time</span></div>
-        <div class="exp-ri"><ul class="exp-ul">
-          <li>Generated <strong>₹100 Cr+/annum</strong> for <strong>80+ D2C clients</strong> by scaling platform order volume from <strong>0 to 3M+ orders/year</strong>.</li>
-          <li>Boosted profitability of <strong>42 firms (118% avg. increase)</strong> from a portfolio of 80+ clients through persistent troubleshooting.</li>
-          <li>Optimized pricing and delivery models, increasing <strong>stakeholder satisfaction by 25%</strong> and <strong>platform revenue by 20%</strong>.</li>
-          <li>Achieved <strong>92% action compliance</strong> by resolving query bottlenecks; outperformed <strong>15 peer managers</strong>.</li>
-          <li>Attained <strong>9/10 client satisfaction score</strong> (50% above team avg.); trained <strong>50+ consultants</strong> on growth dashboards and ad tools.</li>
-        </ul></div>
-      </div>
+      <section id="proof">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Proof surfaces</h2>
+            <p>You asked for banners, images, documents, and certification-style evidence. So this version treats your portfolio as a live proof environment. It uses large showcase banners for positioning, then follows with document shelves and artifact walls that you can expand directly on GitHub with PDFs, images, certificates, decks, and new case-study assets.</p>
+          </div>
+          <div class="showcase">
+            <article class="banner-card reveal">
+              <div class="banner-top">
+                <div>
+                  <span class="eyebrow">Banner one · operator story</span>
+                  <h3 class="banner-title">Scale without losing the system.</h3>
+                  <p class="banner-sub">From dark-store infrastructure to D2C growth playbooks, the through-line is the same: diagnose deeply, simplify ruthlessly, and ship mechanisms that keep working after the meeting ends.</p>
+                </div>
+              </div>
+              <div class="banner-grid">
+                <div class="mini-panel"><strong>Strategy</strong><p>Issue trees, prioritization, trade-offs, should-cost logic.</p></div>
+                <div class="mini-panel"><strong>Growth</strong><p>Funnels, RTO reduction, offer framing, campaign diagnostics.</p></div>
+                <div class="mini-panel"><strong>Product</strong><p>PRDs, feature shaping, dashboards, system design flows.</p></div>
+                <div class="mini-panel"><strong>Execution</strong><p>Field discovery, stakeholder alignment, rollout discipline.</p></div>
+              </div>
+            </article>
+            <div class="media-stack">
+              <article class="banner-card light reveal">
+                <div>
+                  <span class="eyebrow">Banner two · credentials</span>
+                  <h3 class="banner-title" style="max-width:10ch">Built in the field. Backed by numbers.</h3>
+                  <p class="banner-sub">IIM Calcutta MBA, CAT 99.64 percentile, NIT Kurukshetra engineering, multi-industry operating roles, and a body of playbooks, handbooks, and execution documents.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="exp-r">
-        <div class="exp-l"><div class="exp-co">Adani Enterprises</div><div class="exp-ttl">Senior Engineer</div><div class="exp-dt">Jan 2022 — Jul 2022 · 6 mo</div><span class="ebadge eft">Full-Time</span></div>
-        <div class="exp-ri"><ul class="exp-ul">
-          <li>SPOC for RMHS (<strong>₹180 Cr+</strong>) and Steam Dryer (<strong>₹55 Cr+</strong>); evaluated proposals from <strong>15+ international suppliers</strong>.</li>
-          <li>Reviewed <strong>200+ technical documents</strong> from China Nerin and TCE; compiled bid evaluation reports for 10+ vendors.</li>
-          <li>Managed logistics for <strong>1,000+ employees</strong>; achieved <strong>25% cost reduction</strong> through strategic fleet planning.</li>
-        </ul></div>
-      </div>
+      <section id="docs">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Documents</h2>
+            <p>This area is designed so you can drop your resumes, certificates, decks, and handbooks into the same GitHub folder and they will immediately feel native to the site. Keep filenames unchanged or edit the links below to match your repository structure.</p>
+          </div>
+          <div class="doc-links reveal">
+            <a class="doc-link" href="My_Resume.pdf" target="_blank" rel="noopener noreferrer"><small>Resume</small><strong>Main resume</strong><span>Strategy, growth, program management and operating experience.</span></a>
+            <a class="doc-link" href="My_Resume-1.pdf" target="_blank" rel="noopener noreferrer"><small>Resume</small><strong>Alternate resume</strong><span>A second resume version for role-specific positioning.</span></a>
+            <a class="doc-link" href="Checklist-Handbook.pdf" target="_blank" rel="noopener noreferrer"><small>Handbook</small><strong>Checklist handbook</strong><span>Pre-live quality system, website hygiene, catalog and campaign checks.</span></a>
+            <a class="doc-link" href="Campaign-Handbook-2.pdf" target="_blank" rel="noopener noreferrer"><small>SOP</small><strong>Campaign creation handbook</strong><span>Ad-account, campaign, ad-set, creative, and URL parameter process.</span></a>
+            <a class="doc-link" href="Pre-Live-PPT-Final-1.pdf" target="_blank" rel="noopener noreferrer"><small>Deck</small><strong>Pre-live presentation</strong><span>Shopdeck proposition, timelines, optimization logic and growth phases.</span></a>
+            <div class="doc-link"><small>Certificates</small><strong>Certification shelf ready</strong><span>Add PDF files such as <em>certificate-01.pdf</em>, then duplicate this card block to create a live certificate library.</span></div>
+          </div>
+        </div>
+      </section>
 
-      <div class="exp-r">
-        <div class="exp-l"><div class="exp-co">UPS Lakshmi</div><div class="exp-ttl">GE Trainee — B2B Sales</div><div class="exp-dt">Jul 2021 — Jan 2022 · 6 mo</div><span class="ebadge eft">Full-Time</span></div>
-        <div class="exp-ri"><ul class="exp-ul">
-          <li>SPOC for <strong>9+ accounts</strong> incl. <strong>Honeywell &amp; Boeing</strong>; generated record monthly revenue of <strong>₹5 Cr/month</strong>.</li>
-          <li>Grew Honeywell account by <strong>60%</strong> to <strong>₹80L</strong>, maintaining 95%+ on-time delivery and zero quality rejections.</li>
-          <li>Coordinated procurement for <strong>50+ critical items</strong> via 3-year demand forecasting; managed <strong>100+ RFQs</strong>.</li>
-        </ul></div>
-      </div>
+      <section id="artifacts">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Work artifacts</h2>
+            <p>The newly attached materials are useful because they show your working style, not just your outcomes. The whiteboard images and process diagrams support a sharper “systems operator” brand, especially for growth, troubleshooting, and playbook-building roles.</p>
+          </div>
+          <div class="grid-masonry reveal">
+            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.03-AM.jpg" alt="Whiteboard notes on marketing fluctuation diagnosis" width="1240" height="930" loading="lazy"><span>Whiteboard artifact: structured diagnosis of marketing volatility, budget issues, audience overlap, fatigue, and external factors.</span></figure>
+            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.04-AM-2.jpg" alt="Whiteboard list on scaling challenges and audience discovery" width="1240" height="930" loading="lazy"><span>Whiteboard artifact: scaling pain points, audience size constraints, creative fatigue, and product-level issues.</span></figure>
+            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.04-AM-1.jpg" alt="Whiteboard on marketing fluctuations and bundle issues" width="1240" height="930" loading="lazy"><span>Whiteboard artifact: AOV, product fluctuation, spend changes, learning issues, audience size and multiple assets.</span></figure>
+            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.04-AM.jpg" alt="Flowchart for RTO and product-campaign-audience diagnosis" width="1280" height="960" loading="lazy"><span>Framework artifact: decision flow for RTO analysis, campaign checks, audience splits, LP, CX, and recent spikes.</span></figure>
+          </div>
+        </div>
+      </section>
 
-      <div class="exp-r">
-        <div class="exp-l"><div class="exp-co">X-Culture</div><div class="exp-ttl">Intl. Business Consultant</div><div class="exp-dt">Aug 2024 — Dec 2024 · 5 mo</div><span class="ebadge epr">Live Project</span></div>
-        <div class="exp-ri"><ul class="exp-ul">
-          <li>Led a global virtual consulting team across multiple time zones to deliver an <strong>international market entry strategy</strong>.</li>
-          <li>Conducted competition benchmarking and trade regulation analysis across target markets to assess expansion feasibility.</li>
-          <li>Developed a comprehensive GTM plan — entry mode, marketing, promotion, and product adaptation strategies.</li>
-        </ul></div>
-      </div>
+      <section id="why-better">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Why this works better</h2>
+            <p>The previous site had solid content but felt too much like a strong draft. This one is designed as a deployable GitHub-ready premium site with visible proof objects, stronger visual drama, clearer storytelling, and easier extensibility for future case studies, credentials, documents, and banners.</p>
+          </div>
+          <div class="cards-3">
+            <article class="card reveal">
+              <h3>Feels live</h3>
+              <ul>
+                <li>Large banners make the site feel like a real branded destination.</li>
+                <li>Document shelves make PDFs and decks part of the experience, not an afterthought.</li>
+                <li>Artifact wall creates visual proof of systems thinking.</li>
+              </ul>
+            </article>
+            <article class="card reveal">
+              <h3>Feels premium</h3>
+              <ul>
+                <li>Cleaner typography and restrained spacing improve credibility immediately.</li>
+                <li>Dark-light modes add polish without clutter.</li>
+                <li>The overall direction is less template-like and more intentional.</li>
+              </ul>
+            </article>
+            <article class="card reveal">
+              <h3>Feels expandable</h3>
+              <ul>
+                <li>You can keep adding certification PDFs, decks, and case studies on GitHub.</li>
+                <li>The structure already supports more banners, media shelves, and company-specific pages.</li>
+                <li>It can evolve into a personal website, portfolio, and recruiter microsite together.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
 
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="sw">
-    <div class="stag">Projects</div>
-    <h2 class="sh">Key Initiatives</h2>
-    <p class="ssub">Selected work with context on approach, problem, and measurable impact.</p>
-    <div class="pg">
-      <div class="pc feat">
-        <div class="ptag">★ Featured · Blinkit · 2025</div>
-        <div class="ptitle">Dark Store Digitization &amp; Ops Strategy — 2,000+ Locations</div>
-        <div class="pdesc">End-to-end overhaul of Blinkit's dark store operational infrastructure across India. Built location intelligence frameworks, FEFO inventory logic, spatial pick-path optimization, and execution dashboards — taking a fragmented, manual system to a digitized, scalable operating model. Led a 10-member cross-functional team through 15+ pilots from design to pan-India rollout.</div>
-        <div class="pmet">
-          <span class="pm">100% Layout Digitized</span><span class="pm">43% Variance Reduction</span><span class="pm">18% GMV Uplift/sqft</span><span class="pm">1.5× Space Utilisation</span><span class="pm">90% Replenishment Accuracy</span><span class="pm">25% Fewer Complaints</span><span class="pm">10% Faster Pick Time</span><span class="pm">7.5% More Throughput</span>
+    <footer class="footer">
+      <div class="container footer-card reveal">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2 style="margin-top:.9rem">For roles across strategy, product, founder’s office, growth, and high-ownership execution.</h2>
+        </div>
+        <div class="contact-list">
+          <a href="mailto:sumity2025@email.iimcal.ac.in">sumity2025@email.iimcal.ac.in</a>
+          <a href="tel:+919728502596">+91 9728502596</a>
+          <a href="https://linkedin.com/in/sumit-yadav1" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub-ready static site structure</a>
         </div>
       </div>
-
-      <div class="pc">
-        <div class="ptag">📈 Growth · Shopdeck · 2022–23</div>
-        <div class="ptitle">D2C Growth Engine for 80+ Brands</div>
-        <div class="pdesc">Managed commercial growth for a portfolio of 80+ D2C clients. Scaled platform order volume from zero to 3M+/year through pricing redesign, delivery model optimization, and persistent troubleshooting.</div>
-        <div class="pmet"><span class="pm">₹100 Cr+ Revenue</span><span class="pm">118% Profit Uplift</span><span class="pm">9/10 CSAT</span></div>
-      </div>
-
-      <div class="pc">
-        <div class="ptag">🧭 Consulting · Accenture · 2024</div>
-        <div class="ptitle">Strategic Procurement — Should-Cost Model</div>
-        <div class="pdesc">Structured a strategic procurement mandate at Accenture S&amp;C — should-cost modelling across 15+ cost drivers, evaluation of 5 international vendors across 50+ metrics to identify a 10% budget optimization opportunity.</div>
-        <div class="pmet"><span class="pm">10% Budget Savings</span><span class="pm">50+ Metrics</span><span class="pm">5 Intl. Vendors</span></div>
-      </div>
-
-      <div class="pc">
-        <div class="ptag">🏗️ Capex · Adani · 2022</div>
-        <div class="ptitle">₹235 Cr+ Capex Coordination at Mundra</div>
-        <div class="pdesc">SPOC for RMHS (₹180 Cr+) and Steam Dryer (₹55 Cr+). Evaluated 15+ international suppliers, reviewed 200+ documents, and achieved 25% logistics cost reduction.</div>
-        <div class="pmet"><span class="pm">₹235 Cr+ Value</span><span class="pm">15+ Suppliers</span><span class="pm">25% Cost Cut</span></div>
-      </div>
-
-      <div class="pc">
-        <div class="ptag">🌍 International · X-Culture · 2024</div>
-        <div class="ptitle">Global Market Entry Strategy</div>
-        <div class="pdesc">Led a distributed global consulting team to deliver a market entry strategy — competition benchmarking, trade regulation analysis, entry mode selection, and full GTM plan for an international client.</div>
-        <div class="pmet"><span class="pm">Multi-Market</span><span class="pm">GTM Plan</span><span class="pm">Global Team Lead</span></div>
-      </div>
-
-      <div class="pc">
-        <div class="ptag">⚙️ Engineering · Honda · 2020</div>
-        <div class="ptitle">Zero-Defect Manufacturing Line</div>
-        <div class="pdesc">Eliminated production line defects at Honda Motorcycles through root cause analysis and process redesign. Reduced line stoppage from 42 minutes to zero and cut overtime by 63%.</div>
-        <div class="pmet"><span class="pm">0% Defect Rate</span><span class="pm">63% OT Cut</span><span class="pm">0 Min Stoppage</span></div>
-      </div>
-    </div>
+    </footer>
   </div>
-</section>
 
-<section id="skills">
-  <div class="sw">
-    <div class="stag">Capabilities</div>
-    <h2 class="sh">Skills &amp; Certifications</h2>
-    <p class="ssub">Frameworks built in the field, tools used daily, and certifications earned with 93%+ average score.</p>
-    <div class="skills-g">
-      <div>
-        <div class="skb"><div class="skb-l">Strategy &amp; Consulting</div><div class="sk-list"><span class="sp">Issue Tree Structuring</span><span class="sp">Problem Framing</span><span class="sp">Market Sizing (TAM/SAM/SOM)</span><span class="sp">Should-Cost Modeling</span><span class="sp">Bid Evaluation</span><span class="sp">Competitive Benchmarking</span><span class="sp">Business Case Development</span><span class="sp">Market Entry Strategy</span></div></div>
-        <div class="skb"><div class="skb-l">Growth &amp; Commercial</div><div class="sk-list"><span class="sp">Go-to-Market Planning</span><span class="sp">Unit Economics</span><span class="sp">Pricing Strategy</span><span class="sp">Funnel Diagnosis</span><span class="sp">P&amp;L Modeling</span><span class="sp">Revenue Growth Management</span><span class="sp">Client Portfolio Management</span><span class="sp">Demand Forecasting</span></div></div>
-        <div class="skb"><div class="skb-l">Program Management</div><div class="sk-list"><span class="sp">Pilot Design &amp; Scaling</span><span class="sp">Cross-functional Execution</span><span class="sp">Stakeholder Management</span><span class="sp">Process Improvement</span><span class="sp">Spatial Analytics</span><span class="sp">Inventory Systems</span><span class="sp">Vendor Management</span></div></div>
-        <div class="skb"><div class="skb-l">Tools</div><div class="sk-list"><span class="sp">Advanced Excel (Macros, Pivots)</span><span class="sp">PowerPoint</span><span class="sp">Tableau</span><span class="sp">Dashboard Design</span><span class="sp">Data Analysis</span></div></div>
-      </div>
-      <div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:1.2rem;">Certifications</h3>
-        <div class="cg">
-          <div class="cc"><div class="cc-ic">📋</div><div class="cc-inf"><h5>Diploma in Project Management</h5><span>Alison · Nov 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">📦</div><div class="cc-inf"><h5>Product Management Basics</h5><span>Pendo.io · Oct 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">📱</div><div class="cc-inf"><h5>Mobile Product Management</h5><span>UXCam · Oct 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">🔍</div><div class="cc-inf"><h5>Product Discovery Micro-Cert</h5><span>Product School · Nov 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">🎯</div><div class="cc-inf"><h5>Product Management 101</h5><span>Simplilearn · Nov 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">📊</div><div class="cc-inf"><h5>Product Management</h5><span>Great Lakes Academy · Nov 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">💡</div><div class="cc-inf"><h5>Understanding Product Management</h5><span>Alison · Oct 2024</span></div></div>
-          <div class="cc"><div class="cc-ic">🧭</div><div class="cc-inf"><h5>Intro to Strategic Management</h5><span>Alison · Nov 2024</span></div></div>
-        </div>
-        <div style="margin-top:1rem;padding:0.9rem 1.1rem;background:var(--accent-light);border:1px solid rgba(37,99,235,0.18);border-radius:8px;">
-          <p style="font-size:0.78rem;color:var(--accent);font-weight:500;line-height:1.5;">✦ &nbsp;8 globally recognised certifications · 93%+ average score across all programs</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="sw">
-    <div class="stag">Education</div>
-    <h2 class="sh">Academic Background</h2>
-    <p class="ssub">Strong engineering and management foundation with a consistent track record of excellence.</p>
-    <div class="edu-g">
-      <div class="edu-es">
-        <div class="edu-c">
-          <div class="edu-ct"><div class="edu-sc">Indian Institute of Management Calcutta</div><div class="edu-yr">2023–2025</div></div>
-          <div class="edu-dg">Master of Business Administration (MBA)</div>
-          <div class="edu-gr">CGPA: 6.44/9</div>
-          <div class="edu-nt">CAT 99.64 percentile (QA: 99.83%ile) · Converted 12/15 IIM calls including IIM-C, IIM-A, and IIFT</div>
-        </div>
-        <div class="edu-c">
-          <div class="edu-ct"><div class="edu-sc">NIT Kurukshetra</div><div class="edu-yr">2017–2021</div></div>
-          <div class="edu-dg">B.Tech — Mechanical Engineering</div>
-          <div class="edu-gr">CGPA: 8.36/10</div>
-          <div class="edu-nt">Ranked 1/100+ for 10 consecutive years · 10/10 GPA in Semester 6 · Academic Excellence Award · Secretary, Mechanical Society (₹4L+ budget, 100+ team)</div>
-        </div>
-        <div class="edu-c">
-          <div class="edu-ct"><div class="edu-sc">CBSE — Class XII &amp; X</div><div class="edu-yr">2016 / 2014</div></div>
-          <div class="edu-dg">Class XII: 87.2% &nbsp;·&nbsp; Class X: 10/10 CGPA</div>
-          <div class="edu-gr">Head Boy · Student of the Year Award</div>
-        </div>
-      </div>
-      <div class="ach-l">
-        <div class="ai"><div class="ai-em">🎯</div><div class="ai-tx"><strong>CAT 99.64 percentile</strong> — QA: 99.83%ile. Out of 2L+ candidates. Converted 12/15 IIM calls.</div></div>
-        <div class="ai"><div class="ai-em">⚓</div><div class="ai-tx"><strong>Indian Navy Selectee</strong> — Shortlisted for 10+2 B.Tech Cadet Entry. Top 1.5%ile in NDA, twice.</div></div>
-        <div class="ai"><div class="ai-em">📐</div><div class="ai-tx"><strong>GATE Top 2%ile</strong> — AIR 2070/1.2L+ in GATE-ME. AIR 2184/22K+ in GATE-XE. Entitled for NTPC EET.</div></div>
-        <div class="ai"><div class="ai-em">🥇</div><div class="ai-tx"><strong>1st/20+ national teams</strong> — ₹10K, Junkyard War at NIT KKR. 1st/8+ energy conversion. 2nd/50+ Roller Coaster design.</div></div>
-        <div class="ai"><div class="ai-em">👨‍💼</div><div class="ai-tx"><strong>Secretary, Mechanical Society</strong> — ₹4L+ budget, 100+ team, 4K+ footfall at NIT KKR's technical fest.</div></div>
-        <div class="ai"><div class="ai-em">🎪</div><div class="ai-tx"><strong>Techspardha &amp; Confluence</strong> — Secretary at Mechsoc (2020–21). Event Coordinator for both fests (2017–2021).</div></div>
-        <div class="ai"><div class="ai-em">❤️</div><div class="ai-tx"><strong>Shiksha Social Initiative</strong> — 1,000+ hours mentoring 100+ children. ₹3L+ raised. 500+ book community library built.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="contact-g">
-    <div>
-      <div class="stag">Contact</div>
-      <h2 class="sh">Let's Talk</h2>
-      <p class="ssub">Actively exploring roles in Strategy, Growth, Consulting, and Program Management across India.</p>
-      <div class="cl">
-        <a href="mailto:sumity2025@email.iimcal.ac.in" class="clink"><div class="cl-ic">✉</div>sumity2025@email.iimcal.ac.in</a>
-        <a href="tel:+919728502596" class="clink"><div class="cl-ic">📞</div>+91 97285 02596</a>
-        <a href="https://www.linkedin.com/in/sumit-yadav1/" target="_blank" rel="noopener" class="clink"><div class="cl-ic">in</div>linkedin.com/in/sumit-yadav1</a>
-      </div>
-      <a href="sumit_strategy_growth.pdf" download class="cv-btn">↓ Download Full CV (PDF)</a>
-    </div>
-    <div class="c-aside">
-      <div class="c-quote"><p>"30 months inside fast-moving businesses — not advising them. Building inside them. That's the experience I bring to every room."</p></div>
-      <div>
-        <p style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:0.65rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">Open to roles in</p>
-        <div class="c-tags">
-          <span class="ctag">Strategy Manager</span><span class="ctag">Growth Manager</span><span class="ctag">Associate Consultant</span><span class="ctag">Program Manager</span><span class="ctag">Chief of Staff</span><span class="ctag">Business Operations</span><span class="ctag">GTM Manager</span><span class="ctag">Corporate Strategy</span>
-        </div>
-      </div>
-      <div style="padding:1.1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;">
-        <p style="font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.65;">
-          📍 Based in Gurugram &nbsp;·&nbsp; Open to pan-India relocation<br/>
-          🎓 IIM Calcutta MBA 2025 &nbsp;·&nbsp; NIT Kurukshetra B.Tech<br/>
-          📊 CAT 99.64%ile &nbsp;·&nbsp; 30 months full-time experience
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="fl">© 2025 Sumit Yadav · sumity2025@email.iimcal.ac.in</div>
-  <div class="fr">
-    <a href="mailto:sumity2025@email.iimcal.ac.in">Email</a>
-    <a href="https://www.linkedin.com/in/sumit-yadav1/" target="_blank">LinkedIn</a>
-    <a href="sumit_strategy_growth.pdf" download>Download CV</a>
-    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Top</a>
-  </div>
-</footer>
-
-<script>
-const nb = document.getElementById('nb');
-window.addEventListener('scroll', () => {
-  nb.classList.toggle('scrolled', window.scrollY > 20);
-});
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
-  });
-}, {threshold: 0.08});
-document.querySelectorAll('.exp-r,.pc,.ab-card,.ai,.cc,.edu-c').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(14px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  obs.observe(el);
-});
-</script>
+  <script>
+    (function(){
+      const root=document.documentElement;
+      const btn=document.querySelector('[data-theme-toggle]');
+      let theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+      root.setAttribute('data-theme',theme);
+      const setLabel=()=>btn.textContent=theme==='dark'?'Light mode':'Dark mode';
+      setLabel();
+      btn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);setLabel();});
+      const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    })();
+  </script>
 </body>
 </html>
