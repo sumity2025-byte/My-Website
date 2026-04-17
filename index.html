@@ -1,439 +1,108 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sumit Yadav — Strategy, Growth & Systems</title>
-  <meta name="description" content="A premium portfolio for Sumit Yadav — blending strategy, growth, product and execution across Blinkit, Shopdeck, Accenture and IIM Calcutta." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root,[data-theme="light"]{
-      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
-      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
-      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
-      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
-      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
-      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
-      --text-3xl:clamp(2.7rem,1rem + 4vw,5.5rem);
-      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem; --space-12:3rem; --space-16:4rem; --space-20:5rem; --space-24:6rem;
-      --bg:#f5f2ed; --surface:#fbf9f5; --surface-2:#f1eee7; --surface-3:#e8e3da; --line:rgba(40,37,29,.12);
-      --text:#1f1b17; --muted:#6f6a63; --faint:#9d978f; --inverse:#f9f8f4;
-      --primary:#0d6b72; --primary-2:#d4e6e4; --accent:#bb4d24; --accent-2:#f3dfd5;
-      --shadow-sm:0 1px 2px rgba(20,16,12,.05); --shadow-md:0 10px 30px rgba(20,16,12,.08); --shadow-lg:0 24px 60px rgba(20,16,12,.14);
-      --radius-sm:.5rem; --radius-md:.9rem; --radius-lg:1.3rem; --radius-xl:2rem; --radius-pill:999px;
-      --font-display:'Instrument Serif', Georgia, serif; --font-body:'Inter', Arial, sans-serif;
-      --content:1200px;
-    }
-    [data-theme="dark"]{
-      --bg:#111111; --surface:#171717; --surface-2:#1d1d1d; --surface-3:#272727; --line:rgba(255,255,255,.1);
-      --text:#f4efe8; --muted:#b4aba0; --faint:#7e766e; --inverse:#171717;
-      --primary:#82c7c6; --primary-2:rgba(130,199,198,.12); --accent:#ff8d5e; --accent-2:rgba(255,141,94,.12);
-      --shadow-sm:0 1px 2px rgba(0,0,0,.25); --shadow-md:0 16px 44px rgba(0,0,0,.28); --shadow-lg:0 30px 90px rgba(0,0,0,.4);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);font-size:var(--text-base);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-    img,iframe,svg{display:block;max-width:100%}
-    a{color:inherit;text-decoration:none}
-    button{font:inherit;border:none;background:none;color:inherit;cursor:pointer}
-    .skip{position:absolute;left:-9999px}
-    .skip:focus{left:1rem;top:1rem;z-index:1000;background:var(--surface);padding:.75rem 1rem;border-radius:var(--radius-sm);outline:2px solid var(--primary)}
-    .shell{position:relative;overflow:hidden}
-    .shell::before,.shell::after{content:"";position:fixed;inset:auto;pointer-events:none;z-index:0;filter:blur(70px);opacity:.45}
-    .shell::before{width:30rem;height:30rem;top:-8rem;right:-10rem;background:radial-gradient(circle,var(--primary-2),transparent 60%)}
-    .shell::after{width:26rem;height:26rem;bottom:5%;left:-8rem;background:radial-gradient(circle,var(--accent-2),transparent 60%)}
-    .grain{position:fixed;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.18) 0 1px,transparent 1px),radial-gradient(circle at 80% 60%,rgba(255,255,255,.15) 0 1px,transparent 1px);background-size:34px 34px,48px 48px;mix-blend-mode:overlay}
-    .container{width:min(calc(100% - 2rem),var(--content));margin:0 auto;position:relative;z-index:1}
-    .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.85rem;font-size:var(--text-sm);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-    .brand-mark{width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:linear-gradient(135deg,var(--surface-2),transparent 70%)}
-    .brand-mark svg{width:1.3rem;height:1.3rem}
-    .nav-links{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap}
-    .nav-links a{font-size:var(--text-sm);color:var(--muted)}
-    .nav-links a:hover{color:var(--text)}
-    .theme-toggle,.btn{min-height:44px;padding:.8rem 1.1rem;border-radius:var(--radius-pill);border:1px solid var(--line);transition:.2s ease}
-    .theme-toggle:hover,.btn:hover{transform:translateY(-1px)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;font-size:var(--text-sm);font-weight:600}
-    .btn-primary{background:var(--text);color:var(--inverse);border-color:transparent}
-    .btn-secondary{background:transparent;color:var(--text)}
-    .eyebrow{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.45rem .8rem;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);background:color-mix(in srgb,var(--surface) 70%,transparent)}
-    .hero{padding:clamp(4rem,9vw,8rem) 0 3rem}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:end}
-    h1,h2,h3{line-height:1.05;font-weight:400}
-    h1{font-family:var(--font-display);font-size:var(--text-3xl);max-width:11ch;letter-spacing:-.03em}
-    .lede{font-size:var(--text-lg);max-width:42rem;color:var(--muted);margin-top:1.2rem}
-    .hero-copy{display:flex;flex-direction:column;gap:1.4rem}
-    .hero-actions,.mini-links{display:flex;flex-wrap:wrap;gap:.9rem}
-    .mini-links a{font-size:var(--text-sm);color:var(--muted);text-decoration:underline;text-underline-offset:.25rem}
-    .hero-panel{background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 94%,transparent),var(--surface-2));border:1px solid var(--line);border-radius:var(--radius-xl);padding:1.35rem;box-shadow:var(--shadow-lg)}
-    .portrait-card{display:grid;gap:1rem}
-    .portrait-frame{aspect-ratio:4/5;border-radius:calc(var(--radius-xl) - .3rem);overflow:hidden;background:linear-gradient(160deg,var(--surface-3),transparent 70%),radial-gradient(circle at 20% 20%,var(--primary-2),transparent 40%),#1b1b1b;display:grid;place-items:end;padding:1rem;border:1px solid var(--line)}
-    .portrait-figure{width:100%;height:100%;border-radius:1.4rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));position:relative;overflow:hidden}
-    .portrait-figure::before{content:"SUMIT YADAV";position:absolute;left:1rem;top:1rem;font-size:var(--text-xs);letter-spacing:.18em;color:rgba(255,255,255,.55)}
-    .portrait-figure::after{content:"STRATEGY \00B7 GROWTH \00B7 OPERATIONS";position:absolute;left:1rem;bottom:1rem;font-size:var(--text-xs);letter-spacing:.16em;color:rgba(255,255,255,.55)}
-    .portrait-silhouette{position:absolute;inset:auto 12% 0 12%;height:78%;border-radius:12rem 12rem 1.8rem 1.8rem;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
-    .portrait-silhouette::before{content:"";position:absolute;top:-18%;left:50%;transform:translateX(-50%);width:34%;aspect-ratio:1;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.08))}
-    .metric-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:2rem 0 1rem}
-    .metric{padding:1.1rem 1.15rem;border-top:1px solid var(--line)}
-    .metric strong{display:block;font-size:clamp(1.5rem,1.2rem + 1.5vw,2.5rem);line-height:1;font-weight:800}
-    .metric span{display:block;margin-top:.4rem;color:var(--muted);font-size:var(--text-sm)}
-    section{padding:clamp(3rem,7vw,6rem) 0;border-top:1px solid var(--line)}
-    .section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:2rem;align-items:start;margin-bottom:2rem}
-    .section-head h2{font-family:var(--font-display);font-size:var(--text-2xl)}
-    .section-head p{color:var(--muted);max-width:50rem}
-    .cards-3,.cards-2,.cards-4{display:grid;gap:1rem}
-    .cards-3{grid-template-columns:repeat(3,1fr)} .cards-2{grid-template-columns:repeat(2,1fr)} .cards-4{grid-template-columns:repeat(4,1fr)}
-    .card{background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 96%,transparent),var(--surface-2));border:1px solid var(--line);border-radius:var(--radius-lg);padding:1.25rem;box-shadow:var(--shadow-sm)}
-    .card h3{font-size:var(--text-lg);font-family:var(--font-body);font-weight:700;line-height:1.2}
-    .card p,.card li{color:var(--muted);font-size:var(--text-sm)}
-    .card ul{list-style:none;display:grid;gap:.65rem;margin-top:1rem}
-    .card li::before{content:"— ";color:var(--primary)}
-    .benchmark-table{overflow:auto;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--surface)}
-    table{width:100%;border-collapse:collapse;min-width:880px}
-    th,td{padding:1rem 1.1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:var(--text-sm)}
-    th{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--surface-2)}
-    td strong{display:block;margin-bottom:.25rem}
-    .timeline{display:grid;gap:1rem}
-    .timeline-item{display:grid;grid-template-columns:220px 1fr;gap:1.4rem;padding:1.2rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--surface),var(--surface-2))}
-    .timeline-item time{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
-    .timeline-item h3{font-size:var(--text-lg);font-weight:700;font-family:var(--font-body)}
-    .timeline-item .meta{color:var(--muted);font-size:var(--text-sm);margin:.2rem 0 .8rem}
-    .tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
-    .tag{padding:.45rem .75rem;border-radius:var(--radius-pill);background:var(--surface-3);font-size:var(--text-xs);color:var(--muted);border:1px solid var(--line)}
-    .showcase{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
-    .banner-card{min-height:420px;border-radius:var(--radius-xl);border:1px solid var(--line);overflow:hidden;background:linear-gradient(135deg,rgba(130,199,198,.18),transparent 42%),linear-gradient(180deg,#151515,#0f0f0f);padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative}
-    .banner-card.light{background:linear-gradient(135deg,rgba(13,107,114,.08),transparent 35%),linear-gradient(180deg,#faf8f2,#ebe5db)}
-    .banner-card::after{content:"";position:absolute;right:-8%;bottom:-14%;width:18rem;height:18rem;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 60%)}
-    .banner-top{display:flex;justify-content:space-between;gap:1rem;align-items:start;position:relative;z-index:1}
-    .banner-title{font-family:var(--font-display);font-size:clamp(2rem,1.5rem + 2vw,3.6rem);max-width:8ch;line-height:.98}
-    .banner-sub{max-width:30rem;color:var(--muted);margin-top:.8rem}
-    .banner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;position:relative;z-index:1}
-    .mini-panel{padding:1rem;border:1px solid rgba(255,255,255,.08);border-radius:1.1rem;background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
-    [data-theme="light"] .mini-panel{border-color:rgba(0,0,0,.08);background:rgba(255,255,255,.65)}
-    .media-stack{display:grid;gap:1rem}
-    .doc-card iframe,.img-card img{width:100%;border:0;border-radius:1rem;background:#fff;aspect-ratio:4/3}
-    .doc-card,.img-card{padding:1rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--surface)}
-    .doc-card p,.img-card p{margin-top:.7rem;font-size:var(--text-sm);color:var(--muted)}
-    .doc-links{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-    .doc-link{padding:1.1rem;border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--surface),var(--surface-2))}
-    .doc-link small{display:block;color:var(--faint);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.45rem}
-    .doc-link strong{display:block;font-size:var(--text-base);margin-bottom:.4rem}
-    .grid-masonry{columns:2 280px;column-gap:1rem}
-    .grid-masonry .artifact{break-inside:avoid;margin-bottom:1rem}
-    .artifact{padding:1rem;border-radius:var(--radius-lg);border:1px solid var(--line);background:var(--surface)}
-    .artifact img{border-radius:1rem;width:100%;height:auto}
-    .artifact span{display:block;margin-top:.7rem;color:var(--muted);font-size:var(--text-sm)}
-    .footer{padding:2rem 0 4rem;color:var(--muted)}
-    .footer-card{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;padding:1.2rem;border:1px solid var(--line);border-radius:var(--radius-xl);background:linear-gradient(180deg,var(--surface),var(--surface-2))}
-    .footer-card h2{font-family:var(--font-display);font-size:var(--text-xl)}
-    .contact-list{display:grid;gap:.7rem}
-    .contact-list a{display:inline-flex;align-items:center;gap:.6rem;color:var(--text)}
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
-    .reveal.visible{opacity:1;transform:none}
-    @media (max-width: 1024px){
-      .hero-grid,.section-head,.showcase,.footer-card{grid-template-columns:1fr}
-      .cards-4{grid-template-columns:repeat(2,1fr)}
-      .metric-strip,.cards-3,.cards-2{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width: 720px){
-      .nav-links{display:none}
-      .hero{padding-top:2.5rem}
-      .metric-strip,.cards-3,.cards-2,.cards-4,.doc-links{grid-template-columns:1fr}
-      .timeline-item{grid-template-columns:1fr}
-      .container{width:min(calc(100% - 1.2rem),var(--content))}
-      .banner-card{min-height:360px}
-      .grid-masonry{columns:1}
-    }
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sumit Yadav — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050816;--panel:#0d1224;--panel2:#121a34;--text:#f6f8ff;--muted:#b7c0e2;--line:rgba(255,255,255,.08);--accent:#ff4d6d;--accent2:#7c5cff;--accent3:#25d0ab;--accent4:#ffb703;--radius:24px;--shadow:0 30px 80px rgba(0,0,0,.45)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,sans-serif;background:
+radial-gradient(circle at 15% 15%, rgba(124,92,255,.28), transparent 22%),
+radial-gradient(circle at 80% 10%, rgba(255,77,109,.22), transparent 20%),
+radial-gradient(circle at 70% 80%, rgba(37,208,171,.18), transparent 20%),
+linear-gradient(180deg,#040615 0%,#081126 100%);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.wrap{width:min(100% - 24px, 1280px);margin:auto}.nav{position:sticky;top:0;z-index:30;background:rgba(5,8,22,.58);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.navin{display:flex;justify-content:space-between;align-items:center;padding:16px 0}.brand{font-weight:900;letter-spacing:.08em;text-transform:uppercase}.links{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px}.hero{padding:36px 0 24px}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}.hero-card,.panel{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:var(--shadow);border-radius:var(--radius)}.hero-card{padding:28px;min-height:620px;position:relative;overflow:hidden}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:9px 14px;border:1px solid var(--line);border-radius:999px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#dce4ff;background:rgba(255,255,255,.04)}h1{font-family:'Instrument Serif',serif;font-size:clamp(3rem,6vw,6.4rem);line-height:.9;margin:16px 0 14px;max-width:10ch}p.lead{max-width:58ch;color:var(--muted);font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.7}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{padding:14px 18px;border-radius:999px;font-weight:800;font-size:14px}.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white}.btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--line)}.float{position:absolute;inset:auto -10% -10% auto;width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,183,3,.35),transparent 68%);filter:blur(15px)}.hero-art{display:grid;grid-template-rows:1fr auto;gap:16px;padding:18px}.preview{border-radius:20px;overflow:hidden;min-height:270px;position:relative;background:linear-gradient(135deg,rgba(124,92,255,.35),rgba(255,77,109,.18)), url('WhatsApp-Image-2026-04-14-at-5.21.04-AM.jpg') center/cover no-repeat}.preview::after{content:'Live portfolio showcase';position:absolute;left:16px;bottom:16px;padding:8px 12px;border-radius:999px;background:rgba(5,8,22,.66);backdrop-filter:blur(10px);font-size:12px;letter-spacing:.12em;text-transform:uppercase}.statgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.stat strong{display:block;font-size:1.5rem}.stat span{color:var(--muted);font-size:13px}
+.section{padding:22px 0 0}.heading{display:flex;justify-content:space-between;gap:16px;align-items:end;margin:34px 0 14px}.heading h2{font-size:clamp(1.5rem,2.5vw,2.4rem);margin:0}.heading p{color:var(--muted);max-width:58ch;margin:0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{padding:18px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:var(--shadow)}.card h3{margin:8px 0 8px;font-size:18px}.card p,.card li{color:var(--muted);line-height:1.7;font-size:14px}.card ul{padding-left:18px;margin:12px 0 0}.table{overflow:auto;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.04)}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14px}th{color:#c9d4ff;background:rgba(255,255,255,.04);text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+.shelf{margin-top:18px}.shead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:10px}.shead h3{margin:0;font-size:1.2rem}.shead p{margin:0;color:var(--muted);font-size:14px}.carousel{position:relative}.trackwrap{overflow:hidden}.track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(72%, 72vw);gap:14px;transition:transform .55s cubic-bezier(.22,1,.36,1)}.item{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:#0d1329;transition:transform .25s ease, box-shadow .25s ease}.item:hover{transform:scale(1.06);z-index:2;box-shadow:0 26px 60px rgba(0,0,0,.45)}.item img{width:100%;height:100%;object-fit:cover}.poster{aspect-ratio:2/3}.land{aspect-ratio:16/9}.overlay{position:absolute;inset:auto 0 0 0;padding:14px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.9) 68%)}.overlay h4{margin:0 0 8px;font-size:15px}.badges{display:flex;flex-wrap:wrap;gap:6px}.badge{padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.12);font-size:11px}.btnnav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:104px;border-radius:18px;border:1px solid var(--line);background:rgba(5,8,22,.72);backdrop-filter:blur(12px);color:#fff;font-size:28px;z-index:5;opacity:0;transition:.2s}.carousel:hover .btnnav{opacity:1}.btnnav.prev{left:-8px}.btnnav.next{right:-8px}.dots{display:flex;justify-content:flex-end;gap:6px;margin-top:10px}.dot{width:22px;height:4px;border-radius:999px;background:rgba(255,255,255,.12)}.dot.active{background:white}
+.docgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.doc{padding:18px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}.doc small{display:block;color:#9bb0ff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}.doc strong{display:block;font-size:18px;margin-bottom:8px}.doc span{color:var(--muted);font-size:14px;line-height:1.6}.footer{padding:24px 0 48px}.foot{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px;border-radius:24px;border:1px solid var(--line);background:rgba(255,255,255,.05)}.contact{display:grid;gap:8px;color:var(--muted)}.reveal{opacity:0;transform:translateY(18px);transition:.7s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:1100px){.hero-grid,.foot{grid-template-columns:1fr}.cards,.docgrid{grid-template-columns:1fr 1fr}.track{grid-auto-columns:calc((100% - 14px)/2.2)}}
+@media(max-width:760px){.links{display:none}.cards,.docgrid{grid-template-columns:1fr}.track{grid-auto-columns:minmax(86%,86vw)}.btnnav{display:none}.hero-card{min-height:auto}.hero{padding-top:20px}}
+</style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="shell">
-    <div class="grain"></div>
-    <header class="nav">
-      <div class="container nav-inner">
-        <a class="brand" href="#top" aria-label="Sumit Yadav home">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 7c2-2 4-3 7-3 3.5 0 6.3 1.6 7 4.5.8 3.2-1.1 5.9-5.6 7.3L9 17"/><path d="M6 18c1.4 1.3 3.4 2 5.7 2 3.7 0 6.5-1.7 7.3-4.7"/></svg>
-          </span>
-          <span>Sumit Yadav</span>
-        </a>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="#thesis">Positioning</a>
-          <a href="#work">Experience</a>
-          <a href="#proof">Proof</a>
-          <a href="#docs">Documents</a>
-          <a href="#artifacts">Artifacts</a>
-        </nav>
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">Theme</button>
+<div class="nav"><div class="wrap navin"><div class="brand">SUMIT YADAV</div><div class="links"><a href="#about">About</a><a href="#work">Work</a><a href="#proof">Proof</a><a href="#docs">Docs</a><a href="#contact">Contact</a></div></div></div>
+<div class="wrap hero" id="about">
+  <div class="hero-grid">
+    <div class="hero-card reveal visible">
+      <span class="eyebrow">Strategy · Growth · Product · Operations</span>
+      <h1>A colorful, cinematic portfolio built to feel alive.</h1>
+      <p class="lead">This portfolio is designed with the premium clarity of Apple, the elegant warmth of Ellipsus, and the browsable shelf structure of Netflix. The point is simple: make your work impossible to ignore.</p>
+      <div class="cta"><a class="btn primary" href="#proof">View proof</a><a class="btn secondary" href="#docs">Open documents</a></div>
+      <div class="float"></div>
+    </div>
+    <div class="hero-card hero-art reveal">
+      <div class="preview"></div>
+      <div class="statgrid">
+        <div class="stat"><strong>2,300+</strong><span>Dark stores influenced</span></div>
+        <div class="stat"><strong>₹100Cr+</strong><span>Business impact</span></div>
+        <div class="stat"><strong>80+</strong><span>D2C brands</span></div>
+        <div class="stat"><strong>10+</strong><span>Certifications</span></div>
       </div>
-    </header>
-
-    <main id="main">
-      <section class="hero container" id="top">
-        <div class="hero-grid">
-          <div class="hero-copy reveal visible">
-            <span class="eyebrow">Operator mindset · premium personal site</span>
-            <h1>Building growth systems that survive contact with reality.</h1>
-            <p class="lede">A strategy, growth, product, and operations portfolio built with the editorial restraint of Ellipsus, the visual confidence of Apple, and the cinematic hierarchy of Netflix — but translated into a sharper operator story for Sumit Yadav.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#proof">Explore proof of work</a>
-              <a class="btn btn-secondary" href="#docs">Open documents</a>
-            </div>
-            <div class="mini-links">
-              <a href="My_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-              <a href="My_Resume-1.pdf" target="_blank" rel="noopener noreferrer">Alt resume</a>
-              <a href="Checklist-Handbook.pdf" target="_blank" rel="noopener noreferrer">Checklist handbook</a>
-              <a href="Campaign-Handbook-2.pdf" target="_blank" rel="noopener noreferrer">Campaign SOP</a>
-              <a href="Pre-Live-PPT-Final-1.pdf" target="_blank" rel="noopener noreferrer">Pre-live deck</a>
-            </div>
-          </div>
-          <aside class="hero-panel portrait-card reveal">
-            <div class="portrait-frame">
-              <div class="portrait-figure" aria-hidden="true">
-                <div class="portrait-silhouette"></div>
-              </div>
-            </div>
-            <div>
-              <span class="eyebrow">Current profile</span>
-              <p style="margin-top:.85rem;color:var(--muted)">Blinkit generalist working across product, strategy, and operations; ex-Shopdeck growth; ex-Accenture Strategy intern; MBA from IIM Calcutta; CAT 99.64 percentile.</p>
-            </div>
-          </aside>
-        </div>
-        <div class="metric-strip">
-          <div class="metric reveal"><strong>2,300+</strong><span>Dark stores influenced across Blinkit systems</span></div>
-          <div class="metric reveal"><strong>₹100Cr+</strong><span>Annual business impact across Shopdeck clients</span></div>
-          <div class="metric reveal"><strong>80+</strong><span>D2C brands handled in growth and troubleshooting</span></div>
-          <div class="metric reveal"><strong>10+</strong><span>Certifications in strategy, consulting and product</span></div>
-        </div>
-      </section>
-
-      <section id="thesis">
-        <div class="container">
-          <div class="section-head reveal">
-            <h2>Design thesis</h2>
-            <p>This rebuild is intentionally benchmarked against three very different references. Ellipsus contributes editorial calm and language-first composition; Apple contributes premium surfaces, image-led storytelling, and whitespace discipline; Netflix contributes bold banner sequencing, dark immersion, and content-led browsing rhythm. Your previous site already had strong factual density, but it lacked stronger art direction, media hierarchy, and a dedicated space for live documents and visual proof.</p>
-          </div>
-          <div class="benchmark-table reveal">
-            <table>
-              <thead>
-                <tr>
-                  <th>Reference</th>
-                  <th>What it does well</th>
-                  <th>What your old site missed</th>
-                  <th>How this redesign responds</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Ellipsus</strong>Editorial software calm</td>
-                  <td>Strong typography, high trust, soft surfaces, focused copy blocks, no visual clutter.</td>
-                  <td>The old website had good content but not enough breathing room or elegant narrative pacing.</td>
-                  <td>Introduced serif-led headlines, muted palette moments, cleaner grids, and quieter cards that let the writing feel more premium.</td>
-                </tr>
-                <tr>
-                  <td><strong>Apple</strong>Premium product theater</td>
-                  <td>Hero-first storytelling, bold confidence, polished section transitions, visual prestige.</td>
-                  <td>The old website explained your work but did not stage it like flagship work.</td>
-                  <td>Added cinematic banner sections, elevated cards, strong hierarchy, and product-like presentation for documents and achievements.</td>
-                </tr>
-                <tr>
-                  <td><strong>Netflix</strong>Immersive content browsing</td>
-                  <td>Dark visual depth, strong banners, content shelves, instant scanability.</td>
-                  <td>The old website did not feel alive or “live” with artifacts, assets, and a rich content wall.</td>
-                  <td>Added a dark premium mode, media shelves, artifact gallery, and live document blocks that can be expanded on GitHub easily.</td>
-                </tr>
-                <tr>
-                  <td><strong>Your current site</strong>Dense operator credibility</td>
-                  <td>Strong metrics, strong experience bullets, high factual trust.</td>
-                  <td>Needed stronger visual identity, better banners, deeper media integration, and a more modern premium edge.</td>
-                  <td>Preserved the proof, then repackaged it into a richer portfolio system built for hiring managers, founders, and strategy/product roles.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section id="work">
-        <div class="container">
-          <div class="section-head reveal">
-            <h2>Selected work</h2>
-            <p>The strongest portfolio version is not a resume pasted online. It is a narrative of scale, ambiguity, systems thinking, and repeatable execution. This section keeps the facts tight and makes each role read like a meaningful operating chapter instead of a generic chronology.</p>
-          </div>
-          <div class="timeline">
-            <article class="timeline-item reveal">
-              <div>
-                <time>May 2025 — Present</time>
-              </div>
-              <div>
-                <h3>Blinkit — Generalist / Senior Program Manager</h3>
-                <p class="meta">Product, strategy and operations across India’s quick-commerce network</p>
-                <p>Built location and execution systems across 2,300+ dark stores, including layout digitization, prioritization logic, bin-ID standardization, and operational pilots that improved variance, placement accuracy, replenishment accuracy, and pick-path adherence.</p>
-                <div class="tags"><span class="tag">2,300+ stores</span><span class="tag">43% variance reduction</span><span class="tag">18% GMV uplift per sq. ft.</span><span class="tag">76% drop in expiry complaints</span></div>
-              </div>
-            </article>
-            <article class="timeline-item reveal">
-              <div>
-                <time>Sep 2022 — May 2023</time>
-              </div>
-              <div>
-                <h3>Shopdeck — Assistant Manager, Growth</h3>
-                <p class="meta">Growth diagnostics, go-live quality, marketing troubleshooting, merchant tooling</p>
-                <p>Managed 80+ D2C brands and drove ₹100Cr+ annualized business while building dashboards, campaign SOPs, go-live checklists, and troubleshooting frameworks for RTO, pricing, audience fatigue, and marketing volatility.</p>
-                <div class="tags"><span class="tag">₹100Cr+ business impact</span><span class="tag">80+ brands</span><span class="tag">500+ clients standardized</span><span class="tag">92% query resolution</span></div>
-              </div>
-            </article>
-            <article class="timeline-item reveal">
-              <div>
-                <time>May 2024 — Jun 2024</time>
-              </div>
-              <div>
-                <h3>Accenture Strategy & Consulting — Strategy Analyst Intern</h3>
-                <p class="meta">Vendor evaluation, should-cost modeling, structured decision support</p>
-                <p>Worked on procurement strategy under real cost pressure by evaluating international proposals across 50+ metrics and identifying cost levers across 15+ drivers in a bottom-up should-cost model.</p>
-                <div class="tags"><span class="tag">50+ evaluation metrics</span><span class="tag">15+ cost drivers</span><span class="tag">10% optimization identified</span></div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="proof">
-        <div class="container">
-          <div class="section-head reveal">
-            <h2>Proof surfaces</h2>
-            <p>You asked for banners, images, documents, and certification-style evidence. So this version treats your portfolio as a live proof environment. It uses large showcase banners for positioning, then follows with document shelves and artifact walls that you can expand directly on GitHub with PDFs, images, certificates, decks, and new case-study assets.</p>
-          </div>
-          <div class="showcase">
-            <article class="banner-card reveal">
-              <div class="banner-top">
-                <div>
-                  <span class="eyebrow">Banner one · operator story</span>
-                  <h3 class="banner-title">Scale without losing the system.</h3>
-                  <p class="banner-sub">From dark-store infrastructure to D2C growth playbooks, the through-line is the same: diagnose deeply, simplify ruthlessly, and ship mechanisms that keep working after the meeting ends.</p>
-                </div>
-              </div>
-              <div class="banner-grid">
-                <div class="mini-panel"><strong>Strategy</strong><p>Issue trees, prioritization, trade-offs, should-cost logic.</p></div>
-                <div class="mini-panel"><strong>Growth</strong><p>Funnels, RTO reduction, offer framing, campaign diagnostics.</p></div>
-                <div class="mini-panel"><strong>Product</strong><p>PRDs, feature shaping, dashboards, system design flows.</p></div>
-                <div class="mini-panel"><strong>Execution</strong><p>Field discovery, stakeholder alignment, rollout discipline.</p></div>
-              </div>
-            </article>
-            <div class="media-stack">
-              <article class="banner-card light reveal">
-                <div>
-                  <span class="eyebrow">Banner two · credentials</span>
-                  <h3 class="banner-title" style="max-width:10ch">Built in the field. Backed by numbers.</h3>
-                  <p class="banner-sub">IIM Calcutta MBA, CAT 99.64 percentile, NIT Kurukshetra engineering, multi-industry operating roles, and a body of playbooks, handbooks, and execution documents.</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="docs">
-        <div class="container">
-          <div class="section-head reveal">
-            <h2>Documents</h2>
-            <p>This area is designed so you can drop your resumes, certificates, decks, and handbooks into the same GitHub folder and they will immediately feel native to the site. Keep filenames unchanged or edit the links below to match your repository structure.</p>
-          </div>
-          <div class="doc-links reveal">
-            <a class="doc-link" href="My_Resume.pdf" target="_blank" rel="noopener noreferrer"><small>Resume</small><strong>Main resume</strong><span>Strategy, growth, program management and operating experience.</span></a>
-            <a class="doc-link" href="My_Resume-1.pdf" target="_blank" rel="noopener noreferrer"><small>Resume</small><strong>Alternate resume</strong><span>A second resume version for role-specific positioning.</span></a>
-            <a class="doc-link" href="Checklist-Handbook.pdf" target="_blank" rel="noopener noreferrer"><small>Handbook</small><strong>Checklist handbook</strong><span>Pre-live quality system, website hygiene, catalog and campaign checks.</span></a>
-            <a class="doc-link" href="Campaign-Handbook-2.pdf" target="_blank" rel="noopener noreferrer"><small>SOP</small><strong>Campaign creation handbook</strong><span>Ad-account, campaign, ad-set, creative, and URL parameter process.</span></a>
-            <a class="doc-link" href="Pre-Live-PPT-Final-1.pdf" target="_blank" rel="noopener noreferrer"><small>Deck</small><strong>Pre-live presentation</strong><span>Shopdeck proposition, timelines, optimization logic and growth phases.</span></a>
-            <div class="doc-link"><small>Certificates</small><strong>Certification shelf ready</strong><span>Add PDF files such as <em>certificate-01.pdf</em>, then duplicate this card block to create a live certificate library.</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="artifacts">
-        <div class="container">
-          <div class="section-head reveal">
-            <h2>Work artifacts</h2>
-            <p>The newly attached materials are useful because they show your working style, not just your outcomes. The whiteboard images and process diagrams support a sharper “systems operator” brand, especially for growth, troubleshooting, and playbook-building roles.</p>
-          </div>
-          <div class="grid-masonry reveal">
-            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.03-AM.jpg" alt="Whiteboard notes on marketing fluctuation diagnosis" width="1240" height="930" loading="lazy"><span>Whiteboard artifact: structured diagnosis of marketing volatility, budget issues, audience overlap, fatigue, and external factors.</span></figure>
-            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.04-AM-2.jpg" alt="Whiteboard list on scaling challenges and audience discovery" width="1240" height="930" loading="lazy"><span>Whiteboard artifact: scaling pain points, audience size constraints, creative fatigue, and product-level issues.</span></figure>
-            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.04-AM-1.jpg" alt="Whiteboard on marketing fluctuations and bundle issues" width="1240" height="930" loading="lazy"><span>Whiteboard artifact: AOV, product fluctuation, spend changes, learning issues, audience size and multiple assets.</span></figure>
-            <figure class="artifact"><img src="WhatsApp-Image-2026-04-14-at-5.21.04-AM.jpg" alt="Flowchart for RTO and product-campaign-audience diagnosis" width="1280" height="960" loading="lazy"><span>Framework artifact: decision flow for RTO analysis, campaign checks, audience splits, LP, CX, and recent spikes.</span></figure>
-          </div>
-        </div>
-      </section>
-
-      <section id="why-better">
-        <div class="container">
-          <div class="section-head reveal">
-            <h2>Why this works better</h2>
-            <p>The previous site had solid content but felt too much like a strong draft. This one is designed as a deployable GitHub-ready premium site with visible proof objects, stronger visual drama, clearer storytelling, and easier extensibility for future case studies, credentials, documents, and banners.</p>
-          </div>
-          <div class="cards-3">
-            <article class="card reveal">
-              <h3>Feels live</h3>
-              <ul>
-                <li>Large banners make the site feel like a real branded destination.</li>
-                <li>Document shelves make PDFs and decks part of the experience, not an afterthought.</li>
-                <li>Artifact wall creates visual proof of systems thinking.</li>
-              </ul>
-            </article>
-            <article class="card reveal">
-              <h3>Feels premium</h3>
-              <ul>
-                <li>Cleaner typography and restrained spacing improve credibility immediately.</li>
-                <li>Dark-light modes add polish without clutter.</li>
-                <li>The overall direction is less template-like and more intentional.</li>
-              </ul>
-            </article>
-            <article class="card reveal">
-              <h3>Feels expandable</h3>
-              <ul>
-                <li>You can keep adding certification PDFs, decks, and case studies on GitHub.</li>
-                <li>The structure already supports more banners, media shelves, and company-specific pages.</li>
-                <li>It can evolve into a personal website, portfolio, and recruiter microsite together.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-card reveal">
-        <div>
-          <span class="eyebrow">Contact</span>
-          <h2 style="margin-top:.9rem">For roles across strategy, product, founder’s office, growth, and high-ownership execution.</h2>
-        </div>
-        <div class="contact-list">
-          <a href="mailto:sumity2025@email.iimcal.ac.in">sumity2025@email.iimcal.ac.in</a>
-          <a href="tel:+919728502596">+91 9728502596</a>
-          <a href="https://linkedin.com/in/sumit-yadav1" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub-ready static site structure</a>
-        </div>
-      </div>
-    </footer>
+    </div>
   </div>
-
-  <script>
-    (function(){
-      const root=document.documentElement;
-      const btn=document.querySelector('[data-theme-toggle]');
-      let theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
-      root.setAttribute('data-theme',theme);
-      const setLabel=()=>btn.textContent=theme==='dark'?'Light mode':'Dark mode';
-      setLabel();
-      btn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);setLabel();});
-      const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
-      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    })();
-  </script>
+</div>
+<div class="wrap section" id="work">
+  <div class="heading reveal"><h2>Selected experience</h2><p>Keep the site focused on your strongest story: Blinkit, Shopdeck, Accenture, and IIM Calcutta.</p></div>
+  <div class="cards">
+    <div class="card reveal"><h3>Blinkit</h3><p>Product, strategy and operations across 2,300+ dark stores.</p><ul><li>Layout digitization</li><li>Prioritization engine</li><li>Pick-path adherence</li></ul></div>
+    <div class="card reveal"><h3>Shopdeck</h3><p>Growth and merchant systems for 80+ D2C brands.</p><ul><li>Pre-live checklist</li><li>Campaign SOP</li><li>RTO troubleshooting</li></ul></div>
+    <div class="card reveal"><h3>Accenture</h3><p>Strategic vendor evaluation and should-cost modeling.</p><ul><li>50+ metrics</li><li>15+ cost drivers</li><li>Procurement strategy</li></ul></div>
+  </div>
+</div>
+<div class="wrap section" id="proof">
+  <div class="heading reveal"><h2>Proof of work</h2><p>This is where the site feels alive: moving shelves, colorful banners, and browsable content.</p></div>
+  <div class="shelf reveal">
+    <div class="shead"><div><h3>Featured banners</h3><p>Use these for flagship case studies and hero visuals.</p></div></div>
+    <div class="carousel" data-carousel>
+      <button class="btnnav prev">‹</button>
+      <div class="trackwrap"><div class="track">
+        <div class="item"><img class="land" src="WhatsApp-Image-2026-04-14-at-5.21.04-AM.jpg" alt="banner"><div class="overlay"><h4>Operator frameworks</h4><div class="badges"><span class="badge">Live</span><span class="badge">Colorful</span></div></div></div>
+        <div class="item"><img class="land" src="WhatsApp-Image-2026-04-14-at-5.21.03-AM.jpg" alt="banner"><div class="overlay"><h4>Marketing diagnostics</h4><div class="badges"><span class="badge">Strategy</span></div></div></div>
+        <div class="item"><img class="land" src="WhatsApp-Image-2026-04-14-at-5.21.04-AM-2.jpg" alt="banner"><div class="overlay"><h4>Scaling issues</h4><div class="badges"><span class="badge">Growth</span></div></div></div>
+        <div class="item"><img class="land" src="WhatsApp-Image-2026-04-14-at-5.21.04-AM-1.jpg" alt="banner"><div class="overlay"><h4>Budget and demand</h4><div class="badges"><span class="badge">Ops</span></div></div></div>
+      </div></div>
+      <button class="btnnav next">›</button>
+      <div class="dots"></div>
+    </div>
+  </div>
+  <div class="shelf reveal">
+    <div class="shead"><div><h3>Posters and documents</h3><p>Use poster cards for resumes, certificates, decks, and reports.</p></div></div>
+    <div class="carousel" data-carousel>
+      <button class="btnnav prev">‹</button>
+      <div class="trackwrap"><div class="track">
+        <a class="item" href="My_Resume.pdf" target="_blank"><img class="poster" src="WhatsApp-Image-2026-03-31-at-2.22.35-PM.jpg" alt="resume"><div class="overlay"><h4>Main resume</h4><div class="badges"><span class="badge">PDF</span></div></div></a>
+        <a class="item" href="My_Resume-1.pdf" target="_blank"><img class="poster" src="WhatsApp-Image-2026-03-31-at-2.21.56-PM.jpg" alt="resume"><div class="overlay"><h4>Alternate resume</h4><div class="badges"><span class="badge">PDF</span></div></div></a>
+        <a class="item" href="Checklist-Handbook.pdf" target="_blank"><img class="poster" src="WhatsApp-Image-2026-03-31-at-2.21.14-PM.jpg" alt="checklist"><div class="overlay"><h4>Checklist handbook</h4><div class="badges"><span class="badge">PDF</span></div></div></a>
+        <a class="item" href="Campaign-Handbook-2.pdf" target="_blank"><img class="poster" src="WhatsApp-Image-2026-03-31-at-2.20.33-PM.jpg" alt="campaign"><div class="overlay"><h4>Campaign SOP</h4><div class="badges"><span class="badge">PDF</span></div></div></a>
+        <a class="item" href="Pre-Live-PPT-Final-1.pdf" target="_blank"><img class="poster" src="WhatsApp-Image-2026-03-31-at-2.20.25-PM.jpg" alt="deck"><div class="overlay"><h4>Pre-live deck</h4><div class="badges"><span class="badge">PDF</span></div></div></a>
+      </div></div>
+      <button class="btnnav next">›</button>
+      <div class="dots"></div>
+    </div>
+  </div>
+</div>
+<div class="wrap section" id="docs">
+  <div class="heading reveal"><h2>Upload format</h2><p>Use clean file naming and keep the portfolio static and fast.</p></div>
+  <div class="docgrid reveal">
+    <div class="doc"><small>Images</small><strong>PNG / JPG</strong><span>Use for banners, posters, screenshots, and certificate previews.</span></div>
+    <div class="doc"><small>Documents</small><strong>PDF</strong><span>Use for resumes, certificates, SOPs, case studies, and decks.</span></div>
+    <div class="doc"><small>Site</small><strong>index.html</strong><span>Keep one main HTML file in the root of your GitHub repo.</span></div>
+  </div>
+</div>
+<div class="wrap footer" id="contact">
+  <div class="foot reveal">
+    <div><span class="eyebrow">Contact</span><h2 style="font-family:Instrument Serif,serif;font-weight:400;font-size:clamp(1.8rem,3vw,2.8rem);margin:.8rem 0 0">Built for strategy, product, growth, and operations roles.</h2></div>
+    <div class="contact"><a href="mailto:sumity2025@email.iimcal.ac.in">sumity2025@email.iimcal.ac.in</a><a href="tel:+919728502596">+91 9728502596</a><a href="https://linkedin.com/in/sumit-yadav1" target="_blank">LinkedIn</a></div>
+  </div>
+</div>
+<script>
+(function(){
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('[data-carousel]').forEach(carousel=>{const track=carousel.querySelector('.track'),cards=[...track.children],prev=carousel.querySelector('.prev'),next=carousel.querySelector('.next'),dots=carousel.querySelector('.dots');let index=0;const perView=()=>{const w=cards[0].getBoundingClientRect().width,g=parseFloat(getComputedStyle(track).gap)||0,v=carousel.querySelector('.trackwrap').clientWidth;return Math.max(1,Math.round((v+g)/(w+g)))};const pages=()=>Math.max(1,Math.ceil(cards.length/perView()));const render=()=>{dots.innerHTML='';for(let i=0;i<pages();i++){const d=document.createElement('span');d.className='dot'+(i===index?' active':'');dots.appendChild(d)}};const update=()=>{const w=cards[0].getBoundingClientRect().width,g=parseFloat(getComputedStyle(track).gap)||0;track.style.transform=`translateX(-${index*perView()*(w+g)}px)`;render();prev.style.opacity=index===0?.25:'';next.style.opacity=index>=pages()-1?.25:''};prev.onclick=()=>{index=Math.max(0,index-1);update()};next.onclick=()=>{index=Math.min(pages()-1,index+1);update()};window.addEventListener('resize',()=>{index=Math.min(index,pages()-1);update()});update()});
+})();
+</script>
 </body>
 </html>
